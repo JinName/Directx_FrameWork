@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="DXClass">
+      <UniqueIdentifier>{17041943-0f22-468f-819b-011066f13c1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameBase">
+      <UniqueIdentifier>{3147e9f8-9b55-466b-b135-9f86aebd4700}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameBase\Character">
+      <UniqueIdentifier>{a805c2b0-ff8f-47b6-9a69-96639712b7a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameBase\Character\Tiger">
+      <UniqueIdentifier>{7caa58e5-3e7f-4f12-a5ca-b77644af7487}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameBase\Map">
+      <UniqueIdentifier>{99c8222c-36db-4a79-99f1-7939ef8e783a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameManager">
+      <UniqueIdentifier>{b217d22c-08fa-4e36-854e-d3ddb043b252}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D3DSetup.cpp">
+      <Filter>DXClass</Filter>
+    </ClCompile>
+    <ClCompile Include="WinSetup.cpp">
+      <Filter>DXClass</Filter>
+    </ClCompile>
+    <ClCompile Include="GameBase.cpp">
+      <Filter>GameBase</Filter>
+    </ClCompile>
+    <ClCompile Include="Vertex.cpp">
+      <Filter>DXClass</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>DXClass</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyBoard.cpp">
+      <Filter>DXClass</Filter>
+    </ClCompile>
+    <ClCompile Include="Meshes.cpp">
+      <Filter>DXClass</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>GameBase\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Tiger.cpp">
+      <Filter>GameBase\Character\Tiger</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>GameManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Light.cpp">
+      <Filter>DXClass</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>DXClass</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Header.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D3DSetup.h">
+      <Filter>DXClass</Filter>
+    </ClInclude>
+    <ClInclude Include="WinSetup.h">
+      <Filter>DXClass</Filter>
+    </ClInclude>
+    <ClInclude Include="GameBase.h">
+      <Filter>GameBase</Filter>
+    </ClInclude>
+    <ClInclude Include="Vertex.h">
+      <Filter>DXClass</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>DXClass</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyBoard.h">
+      <Filter>DXClass</Filter>
+    </ClInclude>
+    <ClInclude Include="Meshes.h">
+      <Filter>DXClass</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>GameBase\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tiger.h">
+      <Filter>GameBase\Character\Tiger</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>GameManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Light.h">
+      <Filter>DXClass</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>DXClass</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Win32Project1.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

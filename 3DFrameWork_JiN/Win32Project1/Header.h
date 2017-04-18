@@ -1,4 +1,6 @@
 #pragma once
+#include <assert.h>
+#include <iostream>
 #include <Windows.h>
 #include <mmsystem.h>
 #include <d3dx9.h>
@@ -15,9 +17,9 @@
 #define SAFE_DELETE(a) if( (a) != NULL ) delete (a); (a) = NULL;
 
 
-#define POINT D3DLIGHT_POINT
+//#define POINT D3DLIGHT_POINT
 #define DIRECT D3DLIGHT_DIRECTIONAL
-#define SPOT D3DLIGHT_SPOT
+//#define SPOT D3DLIGHT_SPOT
 
 struct Position {
 	// 캐릭터 위치

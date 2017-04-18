@@ -51,9 +51,6 @@
     <ClCompile Include="Camera.cpp">
       <Filter>DXClass</Filter>
     </ClCompile>
-    <ClCompile Include="KeyBoard.cpp">
-      <Filter>DXClass</Filter>
-    </ClCompile>
     <ClCompile Include="Meshes.cpp">
       <Filter>DXClass</Filter>
     </ClCompile>
@@ -70,6 +67,15 @@
       <Filter>DXClass</Filter>
     </ClCompile>
     <ClCompile Include="Material.cpp">
+      <Filter>DXClass</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectInput.cpp">
+      <Filter>DXClass</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>DXClass</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
       <Filter>DXClass</Filter>
     </ClCompile>
   </ItemGroup>
@@ -92,9 +98,6 @@
     <ClInclude Include="Camera.h">
       <Filter>DXClass</Filter>
     </ClInclude>
-    <ClInclude Include="KeyBoard.h">
-      <Filter>DXClass</Filter>
-    </ClInclude>
     <ClInclude Include="Meshes.h">
       <Filter>DXClass</Filter>
     </ClInclude>
@@ -114,6 +117,18 @@
       <Filter>DXClass</Filter>
     </ClInclude>
     <ClInclude Include="Material.h">
+      <Filter>DXClass</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectInput.h">
+      <Filter>DXClass</Filter>
+    </ClInclude>
+    <ClInclude Include="WinConfigure.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>DXClass</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
       <Filter>DXClass</Filter>
     </ClInclude>
   </ItemGroup>

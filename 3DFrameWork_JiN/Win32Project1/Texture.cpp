@@ -3,15 +3,21 @@
 
 
 CTexture::CTexture()
+	:m_pTexture(NULL)
 {
 }
 
 
 CTexture::~CTexture()
 {
+	if (m_pTexture != NULL)
+	{
+		m_pTexture->Release();
+		delete m_pTexture;
+	}
 }
 
-HRESULT CTexture::LoadTexture(LPDIRECT3DDEVICE9 _pDevice, std::wstring _filename)
+HRESULT CTexture::LoadTexture(LPDIRECT3DDEVICE9 _pDevice, std::wstring _filename, int _width, int _height)
 {
 	if (FAILED(D3DXCreateTextureFromFileEx(_pDevice, _filename.c_str()
 		, D3DX_DEFAULT // ÆÄÀÏÀÇ Æø

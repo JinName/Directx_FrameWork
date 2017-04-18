@@ -3,18 +3,12 @@
 #include "Header.h"
 #include "D3DSetup.h"
 #include "Vertex.h"
+#include "Aru.h"
 
 class CGameBase : public CD3DSetup
 {
 private:
-	CVertex *vertex;
-
 	Position m_pos;
-
-	// 구 3개
-	LPD3DXMESH m_Sun;
-	LPD3DXMESH m_Earth;
-	LPD3DXMESH m_Moon;
 
 protected:
 	// 위치 셋팅 - 월드 좌표 변환

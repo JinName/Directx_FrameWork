@@ -3,6 +3,7 @@
 #include "GameBase.h"
 #include "Tiger.h"
 #include "Camera.h"
+#include "Aru.h"
 
 class CGameManager
 {

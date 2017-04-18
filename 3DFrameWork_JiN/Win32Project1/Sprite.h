@@ -10,14 +10,26 @@ private:
 
 	int m_iWidth;
 	int m_iHeight;
+	int m_iSprite_Count;
 
+	// 스프라이트 한칸의 너비, 높이
+	int m_rectWidth;
+	int m_rectHeight;
+
+	// 스프라이트 재생 속도
+	DWORD m_dwSpriteTime;
+	DWORD m_dwOldTime;
+
+	RECT m_rt;
 public:
 	CSprite();
 	~CSprite();
 
 	// 스프라이트 생성 (디바이스, 텍스쳐 경로, 컬러키, )
-	void Create_Sprite();
+	HRESULT Create_Sprite(LPDIRECT3DDEVICE9 _pDevice, std::wstring _filePath, int _width, int _height, int _spriteCount);
 
 	void DrawBitmap(D3DXVECTOR3* pos, D3DCOLOR mask, bool reverse);
+
+	void Animation_Frame();
 };
 

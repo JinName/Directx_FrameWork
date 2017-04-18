@@ -3,7 +3,6 @@
 #include "Header.h"
 #include "D3DSetup.h"
 #include "GameManager.h"
-#include "KeyBoard.h"
 #include "Camera.h"
 
 class CWinSetup

@@ -31,6 +31,9 @@
     <Filter Include="GameManager">
       <UniqueIdentifier>{b217d22c-08fa-4e36-854e-d3ddb043b252}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameBase\Character\2D_Aru">
+      <UniqueIdentifier>{15d060b7-4550-4c4d-a1d3-387d39417d08}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -77,6 +80,9 @@
     </ClCompile>
     <ClCompile Include="Sprite.cpp">
       <Filter>DXClass</Filter>
+    </ClCompile>
+    <ClCompile Include="Aru.cpp">
+      <Filter>GameBase\Character\2D_Aru</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -130,6 +136,9 @@
     </ClInclude>
     <ClInclude Include="Sprite.h">
       <Filter>DXClass</Filter>
+    </ClInclude>
+    <ClInclude Include="Aru.h">
+      <Filter>GameBase\Character\2D_Aru</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

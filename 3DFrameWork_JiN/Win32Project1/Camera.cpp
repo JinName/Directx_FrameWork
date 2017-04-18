@@ -27,7 +27,8 @@ void CCamera::InitCamera(LPDIRECT3DDEVICE9 _pMainDevice)
 	// 화면 종횡 비(Aspect Ratio: Screen Width/ Screen Height),
 	// 가상 화면의 근거리(가까운 면: Near),
 	// 가상 화면의 원거리(Far)을 인수로 함
-	D3DXMatrixPerspectiveFovLH(&m_mtPrj, D3DX_PI / 4, 1.0f, 1.0f, 100.0f);
+	//D3DXMatrixPerspectiveFovLH(&m_mtPrj, D3DX_PI / 4, 1.0f, 1.0f, 100.0f);
+	D3DXMatrixOrthoLH(&m_mtPrj, (float)WND_WIDTH, (float)WND_HEIGHT, NULL, NULL);
 	m_pCameraDevice->SetTransform(D3DTS_PROJECTION, &m_mtPrj);
 }
 

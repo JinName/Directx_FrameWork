@@ -83,6 +83,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Aru.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="GameBase.cpp" />
@@ -100,6 +101,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Aru.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="GameBase.h" />

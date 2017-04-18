@@ -90,6 +90,8 @@ HRESULT CMeshes::InitMeshes(char *_pFilename, LPDIRECT3DDEVICE9 _pDevice)
 
 	// 임시 재질 버퍼 해제
 	pD3DXMtrlBuffer->Release();
+
+	return S_OK;
 }
 void CMeshes::Render(LPDIRECT3DDEVICE9 _pDevice)
 {

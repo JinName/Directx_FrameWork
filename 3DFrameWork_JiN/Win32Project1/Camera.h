@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Header.h"
+#include "WinConfigure.h"
 
 class CCamera
 {

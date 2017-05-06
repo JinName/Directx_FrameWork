@@ -3,10 +3,12 @@
 //#include "WinConfigure.h"
 #include "Texture.h"
 
-class CSprite : public CTexture
+class CSprite //: public CTexture
 {
 private:
+	LPDIRECT3DTEXTURE9 m_pTexture;
 	LPD3DXSPRITE m_pSprite;
+	//LPDIRECT3DDEVICE9 m_pDevice;
 
 	int m_iWidth;
 	int m_iHeight;
@@ -20,7 +22,11 @@ private:
 	DWORD m_dwSpriteTime;
 	DWORD m_dwOldTime;
 
-	RECT m_rt;
+	// 스프라이트 용
+	RECT m_SpriteRect;
+
+	// 충돌 범위
+	RECT m_Collider;
 public:
 	CSprite();
 	~CSprite();
@@ -31,5 +37,9 @@ public:
 	void DrawBitmap(D3DXVECTOR3* pos, D3DCOLOR mask, bool reverse);
 
 	void Animation_Frame();
+
+	void Set_SpriteCollider();
+
+	void CleanUp();
 };
 

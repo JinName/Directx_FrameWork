@@ -18,7 +18,7 @@ void CCharacter::OnInit()
 
 void CCharacter::OnUpdate()
 {
-	Move();
+	//Move();
 }
 
 void CCharacter::OnRender()

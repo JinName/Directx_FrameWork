@@ -59,6 +59,9 @@ LRESULT WINAPI CWinSetup::WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lPa
 
 bool CWinSetup::initWindow()
 {
+	AllocConsole();
+	freopen("CONOUT$", "wt", stdout);
+
 	m_wc =
 	{
 		sizeof(WNDCLASSEX), CS_CLASSDC, WndProc, 0L, 0L,
@@ -85,14 +88,14 @@ void CWinSetup::createWindow()
 	// 윈도우 출력
 	ShowWindow(m_hWnd, SW_SHOWDEFAULT);
 	UpdateWindow(m_hWnd);
-
 }
 
 VOID CWinSetup::Init()
 {
 	// 키보드 생성
 	//m_keyboard->CreateKeyboard(m_hWnd);
-	 
+	//CGameBase* gamebase = CGameBase::Get_Instance();
+	
 
 	m_game = new CGameManager(m_hWnd);
 
@@ -117,8 +120,7 @@ void CWinSetup::MsgLoop()
 		}
 		else
 		{
-			//m_keyboard->Update(msg.wParam, );
-			//m_temp->Update();
+			m_game->Update();
 			m_game->Render();
 		}
 	}

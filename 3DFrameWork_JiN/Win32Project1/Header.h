@@ -7,11 +7,16 @@
 #pragma warning( disable : 4996 )
 #include <strsafe.h>
 #pragma warning( default : 4996 )
-/*
+
+#include <stdio.h>
+#include <iostream>
+using namespace std;
+
+
 #pragma comment(lib, "winmm.lib")
 #pragma comment(lib, "d3d9.lib")
 #pragma comment(lib, "d3dx9.lib")
-*/
+
 
 #define SAFE_RELEASE(p) { if ( (p) ) { (p)->Release(); (p) = 0; } }
 #define SAFE_DELETE(a) if( (a) != NULL ) delete (a); (a) = NULL;

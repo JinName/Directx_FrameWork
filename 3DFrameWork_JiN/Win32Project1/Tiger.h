@@ -4,6 +4,8 @@
 
 class CTiger : public CCharacter
 {
+private:
+	
 public:
 	CTiger();
 	~CTiger();

@@ -19,9 +19,9 @@ CTexture::~CTexture()
 
 HRESULT CTexture::LoadTexture(LPDIRECT3DDEVICE9 _pDevice, std::wstring _filename, int _width, int _height)
 {
-	if (FAILED(D3DXCreateTextureFromFileEx(_pDevice, _filename.c_str()
-		, D3DX_DEFAULT // 파일의 폭
-		, D3DX_DEFAULT // 파일의 높이
+	if (FAILED(D3DXCreateTextureFromFileEx(_pDevice, L"Aru_stand_8peaces.bmp"
+		, _width // 파일의 폭
+		, _height // 파일의 높이
 		, 1 // 밉맵 2d : 1 / 3d : default
 		, 0
 		, D3DFMT_UNKNOWN // 파일 포맷

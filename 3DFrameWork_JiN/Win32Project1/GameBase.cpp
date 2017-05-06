@@ -1,22 +1,6 @@
 #include "GameBase.h"
 
-
-CGameBase::CGameBase()
-	//:vertex(NULL),
-	//m_pos()
-{
-	//vertex = new CVertex;
-	/*
-	m_Sun = NULL;
-	m_Earth = NULL;
-	m_Moon = NULL;
-	*/
-}
-
-
-CGameBase::~CGameBase()
-{
-}
+//CGameBase* CGameBase::instance = nullptr;
 
 void CGameBase::OnInit()
 {

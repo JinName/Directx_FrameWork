@@ -4,7 +4,7 @@
 
 class CD3DSetup
 {
-private:
+protected:
 	// 디바이스 생성을 위한 변수
 	LPDIRECT3D9             m_pD3D;
 
@@ -26,6 +26,10 @@ protected:
 
 public:
 	CD3DSetup();
+	CD3DSetup(LPDIRECT3DDEVICE9 _pDevice)
+	{
+		m_pd3dDevice = _pDevice;
+	}
 	~CD3DSetup();
 
 	// 디바이스 반환

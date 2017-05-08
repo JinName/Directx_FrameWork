@@ -13,6 +13,7 @@ CCamera::~CCamera()
 void CCamera::InitCamera(LPDIRECT3DDEVICE9 _pMainDevice)
 {
 	m_pCameraDevice = _pMainDevice;
+
 	m_vEyePt = D3DXVECTOR3(0.0f, 3.0f, -5.0f);
 	m_vLookatPt = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	m_vUpVec = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
@@ -28,7 +29,7 @@ void CCamera::InitCamera(LPDIRECT3DDEVICE9 _pMainDevice)
 	// 가상 화면의 근거리(가까운 면: Near),
 	// 가상 화면의 원거리(Far)을 인수로 함
 	//D3DXMatrixPerspectiveFovLH(&m_mtPrj, D3DX_PI / 4, 1.0f, 1.0f, 100.0f);
-	D3DXMatrixOrthoLH(&m_mtPrj, (float)WND_WIDTH, (float)WND_HEIGHT, NULL, NULL);
+	D3DXMatrixOrthoLH(&m_mtPrj, 800, 600, NULL, NULL);
 	m_pCameraDevice->SetTransform(D3DTS_PROJECTION, &m_mtPrj);
 }
 

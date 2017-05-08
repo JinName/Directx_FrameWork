@@ -12,21 +12,21 @@ CCharacter::~CCharacter()
 {
 }
 
-void CCharacter::OnInit()
+void CCharacter::Init()
 {
-}
 
-void CCharacter::OnUpdate()
-{
-	//Move();
 }
-
-void CCharacter::OnRender()
+void CCharacter::Update()
 {
+
 }
-
-void CCharacter::OnCleanup()
+void CCharacter::Render()
 {
+
+}
+void CCharacter::Clean()
+{
+
 }
 
 VOID CCharacter::Move()

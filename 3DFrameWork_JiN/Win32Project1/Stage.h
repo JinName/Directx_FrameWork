@@ -7,15 +7,15 @@
 class CStage : public CGameBase
 {
 private:
-	CAru *m_Player;
+	CAru m_Player;
 
 public:
 	CStage();
 	~CStage();
 
-	virtual void OnInit();
-	virtual void OnUpdate();
-	virtual void OnRender();
-	virtual void OnCleanup();
+	virtual void OnInit(LPDIRECT3DDEVICE9 _pDevice);
+	virtual void OnUpdate(LPDIRECT3DDEVICE9 _pDevice);
+	virtual void OnRender(LPDIRECT3DDEVICE9 _pDevice);
+	virtual void OnCleanup(LPDIRECT3DDEVICE9 _pDevice);
 };
 

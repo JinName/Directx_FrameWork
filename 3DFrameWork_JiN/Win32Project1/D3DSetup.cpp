@@ -6,6 +6,7 @@ CD3DSetup::CD3DSetup()
 	m_pd3dDevice(NULL),
 	m_hWnd(NULL)
 {
+	
 }
 
 
@@ -42,8 +43,8 @@ HRESULT CD3DSetup::InitD3D(HWND hWnd)
 	m_pd3dDevice->SetRenderState(D3DRS_LIGHTING, FALSE);
 
 	// 이후 디바이스 셋팅은 이 밑으로
-	OnInit();
-
+	OnInit(m_pd3dDevice);
+	
 	return S_OK;
 }
 
@@ -51,23 +52,27 @@ HRESULT CD3DSetup::InitD3D(HWND hWnd)
 void CD3DSetup::Update()
 {
 	// 업데이트 할 것
-	OnUpdate();
+	OnUpdate(m_pd3dDevice);
 }
 
 void CD3DSetup::Render()
 {
+	RECT rt;
+	rt.left = 0;
+	rt.top = 0;
+	rt.right = 64;
+	rt.bottom = 64;
 	// backbuffer 를 파란색으로 초기화
-	m_pd3dDevice->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0, 0, 255), 1.0f, 0);
+	m_pd3dDevice->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0, 0, 0), 1.0f, 0);
 
 	// 렌더링 시작
 	if (SUCCEEDED(m_pd3dDevice->BeginScene()))
 	{
 		//--------------------
 		// 렌더링 할것
-		OnRender();
+		OnRender(m_pd3dDevice);
 		//--------------------
-
-
+				
 		// 렌더링 끝
 		m_pd3dDevice->EndScene();
 	}
@@ -79,7 +84,7 @@ void CD3DSetup::Render()
 void CD3DSetup::Cleanup()
 {
 	// 메모리 릴리즈 할 것
-	OnCleanup();
+	OnCleanup(m_pd3dDevice);
 
 	if (m_pd3dDevice != NULL)
 		m_pd3dDevice->Release();

@@ -8,10 +8,6 @@
 class CGameBase : public CD3DSetup
 {
 protected:
-	CGameBase() {};
-	CGameBase(const CGameBase& other);
-	~CGameBase() {};
-
 	Position m_pos;
 
 protected:
@@ -19,15 +15,13 @@ protected:
 	void SetPosition(float _fx, float _fy, float _fz);
 
 public:	
-	static CGameBase* Get_Instance()
-	{
-		static CGameBase instance;
-		return &instance;
-	}
+	CGameBase() {};
+	~CGameBase() {};
+	
 	
 	// 부모의 함수
-	virtual void OnInit();
-	virtual void OnUpdate();
-	virtual void OnRender();
-	virtual void OnCleanup();
+	virtual void OnInit(LPDIRECT3DDEVICE9 _pDevice);
+	virtual void OnUpdate(LPDIRECT3DDEVICE9 _pDevice);
+	virtual void OnRender(LPDIRECT3DDEVICE9 _pDevice);
+	virtual void OnCleanup(LPDIRECT3DDEVICE9 _pDevice);
 };

@@ -14,14 +14,18 @@ protected:
 	// 윈도우 정보
 	HWND m_hWnd;
 
+	// test texture
+	LPDIRECT3DTEXTURE9 m_pTexture;
+	LPD3DXSPRITE m_pSprite;
+
 protected:
 
 	// 콜백함수 - 호출되었을때 처리해야할 게임코드를 호출해야함
 	// 하위에서 상속, 상위에서 하위함수 호출, 순수 가상함수
-	virtual void OnInit() = 0;
-	virtual void OnUpdate() = 0;
-	virtual void OnRender() = 0;
-	virtual void OnCleanup() = 0;
+	virtual void OnInit(LPDIRECT3DDEVICE9 _pDevice) = 0;
+	virtual void OnUpdate(LPDIRECT3DDEVICE9 _pDevice) = 0;
+	virtual void OnRender(LPDIRECT3DDEVICE9 _pDevice) = 0;
+	virtual void OnCleanup(LPDIRECT3DDEVICE9 _pDevice) = 0;
 
 
 public:

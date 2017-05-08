@@ -2,19 +2,19 @@
 
 //CGameBase* CGameBase::instance = nullptr;
 
-void CGameBase::OnInit()
+void CGameBase::OnInit(LPDIRECT3DDEVICE9 _pDevice)
 {
 }
 
-void CGameBase::OnUpdate()
+void CGameBase::OnUpdate(LPDIRECT3DDEVICE9 _pDevice)
 {
 }
 
-void CGameBase::OnRender()
+void CGameBase::OnRender(LPDIRECT3DDEVICE9 _pDevice)
 {
 }
 
-void CGameBase::OnCleanup()
+void CGameBase::OnCleanup(LPDIRECT3DDEVICE9 _pDevice)
 {
 }
 

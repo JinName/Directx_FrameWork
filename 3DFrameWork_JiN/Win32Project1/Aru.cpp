@@ -4,7 +4,7 @@
 
 CAru::CAru()
 {
-	m_sprite = new CSprite;
+	//m_sprite = new CSprite;
 }
 
 CAru::~CAru()
@@ -13,47 +13,27 @@ CAru::~CAru()
 	//	m_sprite->CleanUp();
 }
 
-void CAru::OnInit()
+
+void CAru::Init(LPDIRECT3DDEVICE9 _pDevice)
 {
-	
+	m_sprite.Create_Sprite(_pDevice, L"2D_Sprites\\Aru_stand_8peaces.bmp", 512, 64, 8);
 }
 
-void CAru::OnUpdate()
+void CAru::Update()
 {
-	
+	m_sprite.Animation_Frame();
 }
 
-void CAru::OnRender()
+void CAru::Render()
 {
-	
+	m_sprite.DrawBitmap(&D3DXVECTOR3(0.0f, 0.0f, 0.0f), 0xFFFFFFFF, false);
 }
 
-void CAru::OnCleanup()
+void CAru::Clean()
 {
-	
-}
-
-void CAru::aruInit()
-{
-	m_sprite->Create_Sprite(CGameBase::Get_Instance()->GetDevice(), L"2D_Sprites\\Aru_stand_8peaces.bmp", 512, 64, 8);
-}
-
-void CAru::aruUpdate()
-{
-	m_sprite->Animation_Frame();
-
-}
-
-void CAru::aruRender()
-{
-	m_sprite->DrawBitmap(&D3DXVECTOR3(100.0f, 100.0f, 0.0f), 0xFFFFFFFF, false);
-}
-
-void CAru::aruClean()
-{
-	if (m_sprite != NULL)
+	//if (m_sprite != NULL)
 	{
-		m_sprite->CleanUp();
-		delete m_sprite;
+		m_sprite.CleanUp();
+		//delete m_sprite;
 	}
 }

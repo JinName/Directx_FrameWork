@@ -10,6 +10,7 @@ CTiger::~CTiger()
 {
 }
 
+/*
 void CTiger::OnInit()
 {
 	m_meshes = new CMeshes;
@@ -30,3 +31,4 @@ void CTiger::OnCleanup()
 	m_meshes->Release();
 	delete m_meshes;
 }
+*/

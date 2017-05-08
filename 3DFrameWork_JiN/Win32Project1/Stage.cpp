@@ -4,7 +4,7 @@
 
 CStage::CStage()
 {
-	m_Player = new CAru;
+	//m_Player = new CAru;
 }
 
 
@@ -12,23 +12,23 @@ CStage::~CStage()
 {
 }
 
-void CStage::OnInit()
+void CStage::OnInit(LPDIRECT3DDEVICE9 _pDevice)
 {
-	m_Player->aruInit();
+	m_Player.Init(_pDevice);
 }
 
-void CStage::OnUpdate()
+void CStage::OnUpdate(LPDIRECT3DDEVICE9 _pDevice)
 {
-	m_Player->aruUpdate();
+	m_Player.Update();
 }
 
-void CStage::OnRender()
+void CStage::OnRender(LPDIRECT3DDEVICE9 _pDevice)
 {
-	m_Player->aruRender();
+	m_Player.Render();
 }
 
-void CStage::OnCleanup()
+void CStage::OnCleanup(LPDIRECT3DDEVICE9 _pDevice)
 {
-	m_Player->aruClean();
+	m_Player.Clean();
 }
 

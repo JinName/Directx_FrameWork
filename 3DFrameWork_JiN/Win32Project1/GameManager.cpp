@@ -9,10 +9,10 @@ CGameManager::CGameManager()
 
 CGameManager::CGameManager(HWND _hWnd)
 {
-	CGameBase::Get_Instance()->InitD3D(_hWnd);
+	//CGameBase::Get_Instance()->InitD3D(_hWnd);
 	m_hWnd = _hWnd;
 	m_pGameBase = new CStage;
-	//m_pGameBase->InitD3D(_hWnd);
+	m_pGameBase->InitD3D(_hWnd);
 }
 
 CGameManager::~CGameManager()
@@ -23,11 +23,11 @@ void CGameManager::Initialize()
 {
 	
 	// 카메라 초기화
-	m_Camera.InitCamera(CGameBase::Get_Instance()->GetDevice());
+	m_Camera.InitCamera(m_pGameBase->GetDevice());
 
 
-	m_pGameBase = new CStage;
-	m_pGameBase->InitD3D(m_hWnd);
+	//m_pGameBase = new CStage;
+	//m_pGameBase->InitD3D(m_hWnd);
 }
 
 void CGameManager::Update()

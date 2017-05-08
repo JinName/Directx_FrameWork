@@ -5,7 +5,7 @@
 #include "GameBase.h"
 
 
-class CCharacter : public CGameBase
+class CCharacter //: public CGameBase
 {
 protected:
 	// 캐릭터 메시 - 캐릭터의 상태에 따라 동적일 필요
@@ -18,14 +18,12 @@ public:
 	CCharacter();
 	~CCharacter();
 
-	// 부모의 함수
-	virtual void OnInit();
-	virtual void OnUpdate();
-	virtual void OnRender();
-	virtual void OnCleanup();
-
-
 	// 윈도우의 키보드 값을 리턴 받아서 움직임
 	VOID Move();
+
+	void Init();
+	void Update();
+	void Render();
+	void Clean();
 };
 

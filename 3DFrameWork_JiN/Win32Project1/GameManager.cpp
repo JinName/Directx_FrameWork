@@ -7,12 +7,13 @@ CGameManager::CGameManager()
 
 }
 
-CGameManager::CGameManager(HWND _hWnd)
+CGameManager::CGameManager(HINSTANCE _hInstance, HWND _hWnd)
+	:m_hWnd(_hWnd)
+	,m_hInstance(_hInstance)
 {
-	//CGameBase::Get_Instance()->InitD3D(_hWnd);
-	m_hWnd = _hWnd;
+
 	m_pGameBase = new CStage;
-	m_pGameBase->InitD3D(_hWnd);
+	m_pGameBase->InitD3D(m_hWnd);
 }
 
 CGameManager::~CGameManager()
@@ -21,13 +22,8 @@ CGameManager::~CGameManager()
 
 void CGameManager::Initialize()
 {
-	
 	// 카메라 초기화
 	m_Camera.InitCamera(m_pGameBase->GetDevice());
-
-
-	//m_pGameBase = new CStage;
-	//m_pGameBase->InitD3D(m_hWnd);
 }
 
 void CGameManager::Update()

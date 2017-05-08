@@ -14,6 +14,6 @@ public:
 	LPDIRECT3DTEXTURE9 Get_Texture() { return m_pTexture; }
 
 	// 디바이스는 받아오고, 이름받아서 텍스처 정보 로드
-	HRESULT LoadTexture(LPDIRECT3DDEVICE9 _pDevice, std::wstring _filename, int _width, int _height);
+	HRESULT LoadTexture(LPDIRECT3DDEVICE9 _pDevice, std::wstring _filename, int _width, int _height, D3DCOLOR mask);
 };
 

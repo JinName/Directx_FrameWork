@@ -13,9 +13,10 @@ private:
 	CCamera m_Camera;
 
 	HWND m_hWnd;
+	HINSTANCE m_hInstance;
 public:
 	CGameManager();
-	CGameManager(HWND _hWnd);
+	CGameManager(HINSTANCE _hInstance, HWND _hWnd);
 	~CGameManager();
 
 	void Initialize();

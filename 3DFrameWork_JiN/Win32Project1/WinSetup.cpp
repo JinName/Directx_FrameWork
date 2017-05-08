@@ -93,11 +93,9 @@ void CWinSetup::createWindow()
 VOID CWinSetup::Init()
 {
 	// 키보드 생성
-	//m_keyboard->CreateKeyboard(m_hWnd);
-	//CGameBase* gamebase = CGameBase::Get_Instance();
-	
+	CInput::Get_Instance()->InitDirectInput(m_hInst, m_hWnd);
 
-	m_game = new CGameManager(m_hWnd);
+	m_game = new CGameManager(m_hInst, m_hWnd);
 
 	// D3D 초기화
 	m_game->Initialize();

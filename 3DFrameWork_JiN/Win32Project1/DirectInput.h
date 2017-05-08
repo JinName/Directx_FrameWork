@@ -10,8 +10,12 @@
 
 class CInput {
 public:
-	CInput();
-	~CInput();
+	// 沥利 教臂沛 备泅
+	static CInput* Get_Instance()
+	{
+		static CInput instance;
+		return &instance;
+	}
 
 	bool InitDirectInput(HINSTANCE hInstance, HWND hwnd);
 
@@ -21,6 +25,11 @@ public:
 	void GetMouseRelativePosition(long& x, long& y, long& z);
 
 private:
+	// 教臂沛 备泅
+	CInput();
+	CInput(const CInput& other);
+	~CInput();
+
 	bool InitKeyboard(HWND hwnd);
 	bool InitMouse(HWND hwnd);
 	bool ReadKeyboardState();

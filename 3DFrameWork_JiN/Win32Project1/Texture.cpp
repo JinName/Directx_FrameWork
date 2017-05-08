@@ -17,9 +17,9 @@ CTexture::~CTexture()
 	}
 }
 
-HRESULT CTexture::LoadTexture(LPDIRECT3DDEVICE9 _pDevice, std::wstring _filename, int _width, int _height)
+HRESULT CTexture::LoadTexture(LPDIRECT3DDEVICE9 _pDevice, std::wstring _filename, int _width, int _height, D3DCOLOR mask)
 {
-	if (FAILED(D3DXCreateTextureFromFileEx(_pDevice, L"Aru_stand_8peaces.bmp"
+	if (FAILED(D3DXCreateTextureFromFileEx(_pDevice, _filename.c_str()
 		, _width // 파일의 폭
 		, _height // 파일의 높이
 		, 1 // 밉맵 2d : 1 / 3d : default
@@ -28,7 +28,7 @@ HRESULT CTexture::LoadTexture(LPDIRECT3DDEVICE9 _pDevice, std::wstring _filename
 		, D3DPOOL_MANAGED // 메모리 저장될 곳 지정
 		, D3DX_DEFAULT // 필터
 		, D3DX_DEFAULT // 밉필터
-		, D3DCOLOR_XRGB(0, 255, 255) // 컬러 키
+		, mask // 컬러 키
 		, NULL
 		, NULL
 		, &m_pTexture))) // output

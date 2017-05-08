@@ -13,6 +13,7 @@ protected:
 
 	// 윈도우 정보
 	HWND m_hWnd;
+	HINSTANCE m_hInstance;
 
 	// test texture
 	LPDIRECT3DTEXTURE9 m_pTexture;
@@ -38,6 +39,8 @@ public:
 
 	// 디바이스 반환
 	LPDIRECT3DDEVICE9 GetDevice() { return m_pd3dDevice; }
+	HINSTANCE Get_hInstance() { return m_hInstance; }
+	HWND Get_hWnd() { return m_hWnd; }
 
 	// D3D 초기화
 	HRESULT InitD3D(HWND hWnd);

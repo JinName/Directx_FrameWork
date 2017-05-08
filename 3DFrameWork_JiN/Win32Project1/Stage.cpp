@@ -4,7 +4,6 @@
 
 CStage::CStage()
 {
-	//m_Player = new CAru;
 }
 
 

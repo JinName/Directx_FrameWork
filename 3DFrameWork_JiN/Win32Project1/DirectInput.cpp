@@ -3,9 +3,7 @@
 const unsigned int CInput::m_iKeyStateLen = 256;
 
 CInput::CInput()
-	:
-	m_hwnd(0),
-	m_ipDirectInput(NULL)
+	:m_ipDirectInput(NULL)
 {
 	m_pKeyState = new unsigned char[m_iKeyStateLen];// allocate memory for the array
 	m_lMouseX = 0;
@@ -41,6 +39,8 @@ Create the main DirectInput object
 */
 bool CInput::InitDirectInput(HINSTANCE hInstance, HWND hwnd)
 {
+	m_hwnd = hwnd;
+
 	//	Create the main DirectInput object
 	if (FAILED(DirectInput8Create(hInstance,
 		DIRECTINPUT_VERSION,

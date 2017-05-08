@@ -3,12 +3,10 @@
 //#include "WinConfigure.h"
 #include "Texture.h"
 
-class CSprite //: public CTexture
+class CSprite : public CTexture
 {
 private:
-	LPDIRECT3DTEXTURE9 m_pTexture;
 	LPD3DXSPRITE m_pSprite;
-	//LPDIRECT3DDEVICE9 m_pDevice;
 
 	int m_iWidth;
 	int m_iHeight;
@@ -22,6 +20,8 @@ private:
 	DWORD m_dwSpriteTime;
 	DWORD m_dwOldTime;
 
+	D3DXVECTOR3 m_vCenter;
+
 	// 스프라이트 용
 	RECT m_SpriteRect;
 
@@ -32,7 +32,7 @@ public:
 	~CSprite();
 
 	// 스프라이트 생성 (디바이스, 텍스쳐 경로, 컬러키, )
-	HRESULT Create_Sprite(LPDIRECT3DDEVICE9 _pDevice, std::wstring _filePath, int _width, int _height, int _spriteCount);
+	HRESULT Create_Sprite(LPDIRECT3DDEVICE9 _pDevice, std::wstring _filePath, int _width, int _height, int _spriteCount, D3DCOLOR mask);
 
 	void DrawBitmap(D3DXVECTOR3* pos, D3DCOLOR mask, bool reverse);
 

@@ -4,8 +4,9 @@ const unsigned int CInput::m_iKeyStateLen = 256;
 
 CInput::CInput()
 	:m_ipDirectInput(NULL)
+	,m_bKeydown(false)
 {
-	m_pKeyState = new unsigned char[m_iKeyStateLen];// allocate memory for the array
+	m_pKeyState = new unsigned char[m_iKeyStateLen];
 	m_lMouseX = 0;
 	m_lMouseY = 0;
 	m_lMouseZ = 0;
@@ -31,21 +32,18 @@ CInput::~CInput()
 		m_ipMouse->Release();
 		m_ipMouse = NULL;
 	}
-	delete[] m_pKeyState;	// after delete the pointer, the value of the pointer is not changed
+	delete[] m_pKeyState;	
 	m_pKeyState = NULL;
 }
-/*
-Create the main DirectInput object
-*/
+
 bool CInput::InitDirectInput(HINSTANCE hInstance, HWND hwnd)
 {
 	m_hwnd = hwnd;
 
-	//	Create the main DirectInput object
 	if (FAILED(DirectInput8Create(hInstance,
 		DIRECTINPUT_VERSION,
 		IID_IDirectInput8,
-		(LPVOID*)&m_ipDirectInput,// equal to void** (&m_ipDirectInput)
+		(LPVOID*)&m_ipDirectInput,
 		NULL)))
 	{
 		MessageBox(hwnd,
@@ -64,7 +62,6 @@ bool CInput::InitDirectInput(HINSTANCE hInstance, HWND hwnd)
 }
 bool CInput::InitKeyboard(HWND hwnd)
 {
-	// initialize the keyboard device
 	if (FAILED(m_ipDirectInput->CreateDevice(GUID_SysKeyboard, &m_ipKeyboard, NULL)))
 	{
 		MessageBox(hwnd,
@@ -73,8 +70,8 @@ bool CInput::InitKeyboard(HWND hwnd)
 			MB_OK);
 		return false;
 	}
-	// Set the keyboard device data format
-	if (FAILED(m_ipKeyboard->SetDataFormat(&c_dfDIKeyboard)))// a global variable
+
+	if (FAILED(m_ipKeyboard->SetDataFormat(&c_dfDIKeyboard)))
 	{
 		MessageBox(hwnd,
 			L"Set Keyboard Data Format Failed!",
@@ -82,10 +79,10 @@ bool CInput::InitKeyboard(HWND hwnd)
 			MB_OK);
 		return false;
 	}
-	// Set the keyboard device(hardware) shared level
+
 	if (FAILED(m_ipKeyboard->SetCooperativeLevel(hwnd,
-		DISCL_FOREGROUND | // only used when the program in active mode
-		DISCL_EXCLUSIVE))) // when the program in use, other program can't use the keyboard
+		DISCL_FOREGROUND | 
+		DISCL_EXCLUSIVE))) 
 	{
 		MessageBox(hwnd,
 			L"Set Keyboard Cooperative Level Failed!",
@@ -93,7 +90,7 @@ bool CInput::InitKeyboard(HWND hwnd)
 			MB_OK);
 		return false;
 	}
-	// Now acquire the keyboard.
+	
 	if (FAILED(m_ipKeyboard->Acquire()))
 	{
 		MessageBox(hwnd,
@@ -108,7 +105,7 @@ bool CInput::InitKeyboard(HWND hwnd)
 bool CInput::InitMouse(HWND hwnd)
 {
 	m_hwnd = hwnd;
-	// initialize the mouse device
+
 	if (FAILED(m_ipDirectInput->CreateDevice(GUID_SysMouse, &m_ipMouse, NULL)))
 	{
 		MessageBox(hwnd,
@@ -117,8 +114,8 @@ bool CInput::InitMouse(HWND hwnd)
 			MB_OK);
 		return false;
 	}
-	// Set the mouse device data format
-	if (FAILED(m_ipMouse->SetDataFormat(&c_dfDIMouse)))// a global variable
+
+	if (FAILED(m_ipMouse->SetDataFormat(&c_dfDIMouse)))
 	{
 		MessageBox(hwnd,
 			L"Set Mouse Data Format Failed!",
@@ -126,10 +123,10 @@ bool CInput::InitMouse(HWND hwnd)
 			MB_OK);
 		return false;
 	}
-	// Set the mouse device(hardware) shared level
+
 	if (FAILED(m_ipMouse->SetCooperativeLevel(hwnd,
-		DISCL_FOREGROUND | // only used when the program in active mode
-		DISCL_NONEXCLUSIVE))) // when the program in use, other program CAN use the mouse OR the mouse cursor is lost
+		DISCL_FOREGROUND |
+		DISCL_NONEXCLUSIVE)))
 	{
 		MessageBox(hwnd,
 			L"Set Mouse Cooperative Level Failed!",
@@ -137,7 +134,7 @@ bool CInput::InitMouse(HWND hwnd)
 			MB_OK);
 		return false;
 	}
-	// Now acquire the mouse.
+
 	if (FAILED(m_ipMouse->Acquire()))
 	{
 		MessageBox(hwnd,
@@ -149,21 +146,18 @@ bool CInput::InitMouse(HWND hwnd)
 	return true;
 }
 
-// to check if the specific key is pressed
 bool CInput::IsKeyPressed(unsigned char key)
 {
-	// lost recovery method
 	if (!ReadKeyboardState())
 		return false;
 	else
 		return ((m_pKeyState[key] & 0x80) ? true : false);
 }
 
-// read the keyboard device
 bool CInput::ReadKeyboardState()
 {
-	HRESULT  hr = m_ipKeyboard->GetDeviceState(m_iKeyStateLen, (LPVOID)m_pKeyState);////?????????
-	if (FAILED(hr))// if this two failure happens, try to re-acquire the device
+	HRESULT  hr = m_ipKeyboard->GetDeviceState(m_iKeyStateLen, (LPVOID)m_pKeyState);
+	if (FAILED(hr))
 	{
 		if (hr == DIERR_INPUTLOST || hr == DIERR_NOTACQUIRED)
 			m_ipKeyboard->Acquire();
@@ -172,10 +166,9 @@ bool CInput::ReadKeyboardState()
 	}
 	return true;
 }
-// if the mouse key 0~3 is pressed
+
 bool CInput::IsMouseKeyPressed(unsigned char key)
 {
-	// lost recovery method
 	if (!ReadMouseState())
 		return false;
 	else
@@ -184,12 +177,11 @@ bool CInput::IsMouseKeyPressed(unsigned char key)
 void CInput::GetMouseAbsolutePosition(long& x, long& y, long& z)
 {
 	ReadMouseState();
-	// Update the location of the mouse cursor based on the change of the mouse location during the frame.
+	
 	m_lMouseX += m_sMouseState.lX;
 	m_lMouseY += m_sMouseState.lY;
 	m_lMouseZ += m_sMouseState.lZ;
 
-	// Ensure the mouse location doesn't exceed the screen width or height.
 	if (m_lMouseX < 0)  m_lMouseX = 0;
 	if (m_lMouseY < 0)  m_lMouseY = 0;
 
@@ -215,7 +207,7 @@ void CInput::GetMouseRelativePosition(long& x, long& y, long& z)
 bool CInput::ReadMouseState()
 {
 	HRESULT  hr = m_ipMouse->GetDeviceState(sizeof(DIMOUSESTATE), (LPVOID)&m_sMouseState);
-	if (FAILED(hr))// if this two failure happens, try to re-acquire the device
+	if (FAILED(hr))
 	{
 		if (hr == DIERR_INPUTLOST || hr == DIERR_NOTACQUIRED)
 			m_ipMouse->Acquire();

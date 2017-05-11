@@ -19,23 +19,32 @@
     <Filter Include="GameBase">
       <UniqueIdentifier>{3147e9f8-9b55-466b-b135-9f86aebd4700}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameBase\Character">
-      <UniqueIdentifier>{a805c2b0-ff8f-47b6-9a69-96639712b7a8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameBase\Character\Tiger">
-      <UniqueIdentifier>{7caa58e5-3e7f-4f12-a5ca-b77644af7487}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameBase\Map">
-      <UniqueIdentifier>{99c8222c-36db-4a79-99f1-7939ef8e783a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GameManager">
       <UniqueIdentifier>{b217d22c-08fa-4e36-854e-d3ddb043b252}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameBase\Character\2D_Aru">
-      <UniqueIdentifier>{15d060b7-4550-4c4d-a1d3-387d39417d08}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GameBase\Scene">
       <UniqueIdentifier>{4766e3ed-d322-49cc-a4af-94e8a6d98993}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameBase\Entity">
+      <UniqueIdentifier>{a1a5f971-3eab-4539-9729-8544bdfb3ec4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameBase\Entity\Map">
+      <UniqueIdentifier>{99c8222c-36db-4a79-99f1-7939ef8e783a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameBase\Entity\Map\Tiles">
+      <UniqueIdentifier>{427f2b1b-162b-44d2-9c20-daf497f64558}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameBase\Entity\Character">
+      <UniqueIdentifier>{a805c2b0-ff8f-47b6-9a69-96639712b7a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameBase\Entity\Character\Tiger">
+      <UniqueIdentifier>{7caa58e5-3e7f-4f12-a5ca-b77644af7487}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameBase\Entity\Character\2D_Aru">
+      <UniqueIdentifier>{15d060b7-4550-4c4d-a1d3-387d39417d08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameBase\Entity\Map\Background">
+      <UniqueIdentifier>{5057e0dd-8a8f-4ea3-b3f5-2af287bd728a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -61,10 +70,10 @@
       <Filter>DXClass</Filter>
     </ClCompile>
     <ClCompile Include="Character.cpp">
-      <Filter>GameBase\Character</Filter>
+      <Filter>GameBase\Entity\Character</Filter>
     </ClCompile>
     <ClCompile Include="Tiger.cpp">
-      <Filter>GameBase\Character\Tiger</Filter>
+      <Filter>GameBase\Entity\Character\Tiger</Filter>
     </ClCompile>
     <ClCompile Include="GameManager.cpp">
       <Filter>GameManager</Filter>
@@ -85,10 +94,19 @@
       <Filter>DXClass</Filter>
     </ClCompile>
     <ClCompile Include="Aru.cpp">
-      <Filter>GameBase\Character\2D_Aru</Filter>
+      <Filter>GameBase\Entity\Character\2D_Aru</Filter>
     </ClCompile>
     <ClCompile Include="Stage.cpp">
       <Filter>GameBase\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Tile.cpp">
+      <Filter>GameBase\Entity\Map\Tiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>GameBase\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Background.cpp">
+      <Filter>GameBase\Entity\Map\Background</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -114,13 +132,13 @@
       <Filter>DXClass</Filter>
     </ClInclude>
     <ClInclude Include="Character.h">
-      <Filter>GameBase\Character</Filter>
+      <Filter>GameBase\Entity\Character</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Tiger.h">
-      <Filter>GameBase\Character\Tiger</Filter>
+      <Filter>GameBase\Entity\Character\Tiger</Filter>
     </ClInclude>
     <ClInclude Include="GameManager.h">
       <Filter>GameManager</Filter>
@@ -144,10 +162,19 @@
       <Filter>DXClass</Filter>
     </ClInclude>
     <ClInclude Include="Aru.h">
-      <Filter>GameBase\Character\2D_Aru</Filter>
+      <Filter>GameBase\Entity\Character\2D_Aru</Filter>
     </ClInclude>
     <ClInclude Include="Stage.h">
       <Filter>GameBase\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
+      <Filter>GameBase\Entity\Map\Tiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>GameBase\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Background.h">
+      <Filter>GameBase\Entity\Map\Background</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

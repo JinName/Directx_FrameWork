@@ -84,8 +84,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Aru.cpp" />
+    <ClCompile Include="Background.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Character.cpp" />
+    <ClCompile Include="Entity.cpp" />
     <ClCompile Include="GameBase.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="DirectInput.cpp" />
@@ -96,6 +98,7 @@
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Tiger.cpp" />
+    <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Vertex.cpp" />
     <ClCompile Include="WinSetup.cpp" />
     <ClCompile Include="D3DSetup.cpp" />
@@ -103,8 +106,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Aru.h" />
+    <ClInclude Include="Background.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Character.h" />
+    <ClInclude Include="Entity.h" />
     <ClInclude Include="GameBase.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="DirectInput.h" />
@@ -116,6 +121,7 @@
     <ClInclude Include="Stage.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Tiger.h" />
+    <ClInclude Include="Tile.h" />
     <ClInclude Include="Vertex.h" />
     <ClInclude Include="WinConfigure.h" />
     <ClInclude Include="WinSetup.h" />

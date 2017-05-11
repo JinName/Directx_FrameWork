@@ -24,6 +24,10 @@ public:
 	void GetMouseAbsolutePosition(long& x, long& y, long& z);
 	void GetMouseRelativePosition(long& x, long& y, long& z);
 
+	// 키다운 메세지
+	bool Get_Keydown() { return m_bKeydown; }
+	void Set_Keydown(bool _keydown) { m_bKeydown = _keydown; }
+
 private:
 	// 싱글톤 구현
 	CInput();
@@ -36,6 +40,9 @@ private:
 	bool ReadMouseState();
 
 private:
+	// 윈도우 메세지로 키다운 판별
+	bool m_bKeydown;
+
 	HWND					m_hwnd;
 	IDirectInput8*			m_ipDirectInput;
 	LPDIRECTINPUTDEVICE8	m_ipKeyboard;

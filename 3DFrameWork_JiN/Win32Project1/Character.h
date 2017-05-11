@@ -2,12 +2,16 @@
 
 #include "Header.h"
 #include "DirectInput.h"
+#include "Entity.h"
 
-class CCharacter
+class CCharacter : public CEntity
 {
 protected:
-	// 캐릭터 위치
-	D3DXVECTOR3 m_pos;
+	// 캐릭터 속도
+	float m_fSpeed;
+
+	// 캐릭터 방향
+	D3DXVECTOR2 m_vDirection;
 
 public:
 	CCharacter();

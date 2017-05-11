@@ -62,15 +62,14 @@ void CSprite::DrawBitmap(D3DXVECTOR3* pos, D3DCOLOR mask, bool reverse)
 	if (reverse)
 	{
 		D3DXMATRIX mat;
+
 		D3DXVECTOR2 scale(-1.0f, 1.0f);		// flip horizon
 		D3DXVECTOR2 center(pos->x, pos->y);		// set flip center(upper left corner of the sprite)
-		D3DXVECTOR2 translate(float(m_iWidth), 0);
+		D3DXVECTOR2 translate(0, 0);
 
 		D3DXMatrixTransformation2D(&mat, &center, NULL, &scale, NULL, NULL, &translate);
 		m_pSprite->SetTransform(&mat);
 	}
-	
-	D3DXMatrixIdentity(&oldMat);
 
 	m_pSprite->Draw(m_pTexture, &m_SpriteRect, &m_vCenter, pos, mask);
 

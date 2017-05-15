@@ -4,12 +4,14 @@
 
 CSprite::CSprite()
 	:m_pSprite(NULL)
-	, m_dwSpriteTime(100)
+	,m_dwSpriteTime(100)
 	,m_iWidth(0)
 	,m_iHeight(0)
 	,m_iSprite_Count(0)
 	,m_rectWidth(0)
 	,m_rectHeight(0)
+	,m_bAnimation_Switch(true)
+	,m_bCenter_Rect(true)
 {
 	m_SpriteRect = { 0, 0, 0, 0 };
 }
@@ -17,11 +19,6 @@ CSprite::CSprite()
 
 CSprite::~CSprite()
 {
-	if (m_pSprite != NULL)
-	{
-		m_pSprite->Release();
-		//delete m_pSprite;
-	}
 }
 
 HRESULT CSprite::Create_Sprite(LPDIRECT3DDEVICE9 _pDevice, std::wstring _filePath, int _width, int _height, int _spriteCount, D3DCOLOR mask)
@@ -71,7 +68,10 @@ void CSprite::DrawBitmap(D3DXVECTOR3* pos, D3DCOLOR mask, bool reverse)
 		m_pSprite->SetTransform(&mat);
 	}
 
-	m_pSprite->Draw(m_pTexture, &m_SpriteRect, &m_vCenter, pos, mask);
+	if(m_bCenter_Rect)
+		m_pSprite->Draw(m_pTexture, &m_SpriteRect, &m_vCenter, pos, mask);
+	else
+		m_pSprite->Draw(m_pTexture, &m_SpriteRect, NULL, pos, mask);
 
 	m_pSprite->SetTransform(&oldMat);
 	m_pSprite->End();
@@ -79,18 +79,21 @@ void CSprite::DrawBitmap(D3DXVECTOR3* pos, D3DCOLOR mask, bool reverse)
 
 void CSprite::Animation_Frame()
 {
-	DWORD dwCurrentTime = GetTickCount();
-
-	if (dwCurrentTime - m_dwOldTime >= m_dwSpriteTime)
+	if (m_bAnimation_Switch == true)
 	{
-		m_dwOldTime = dwCurrentTime;
-		m_SpriteRect.left += m_rectWidth;
-		m_SpriteRect.right += m_rectWidth;
+		DWORD dwCurrentTime = GetTickCount();
 
-		if (m_SpriteRect.left >= m_iWidth)
+		if (dwCurrentTime - m_dwOldTime >= m_dwSpriteTime)
 		{
-			m_SpriteRect.left = 0;
-			m_SpriteRect.right = m_rectWidth;
+			m_dwOldTime = dwCurrentTime;
+			m_SpriteRect.left += m_rectWidth;
+			m_SpriteRect.right += m_rectWidth;
+
+			if (m_SpriteRect.left >= m_iWidth)
+			{
+				m_SpriteRect.left = 0;
+				m_SpriteRect.right = m_rectWidth;
+			}
 		}
 	}
 }
@@ -102,5 +105,8 @@ void CSprite::Set_SpriteCollider()
 
 void CSprite::CleanUp()
 {
-	
+	if (m_pSprite != NULL)
+	{
+		m_pSprite->Release();
+	}
 }

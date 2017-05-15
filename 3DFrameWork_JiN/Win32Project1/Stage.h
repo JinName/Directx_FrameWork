@@ -1,12 +1,13 @@
 #pragma once
 #include "Header.h"
 #include "GameBase.h"
-#include "Character.h"
+#include "Background.h"
 #include "Aru.h"
 
 class CStage : public CGameBase
 {
 private:
+	CBackground m_Background;
 	CAru m_Player;
 
 public:

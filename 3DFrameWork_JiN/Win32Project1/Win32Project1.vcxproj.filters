@@ -46,6 +46,9 @@
     <Filter Include="GameBase\Entity\Map\Background">
       <UniqueIdentifier>{5057e0dd-8a8f-4ea3-b3f5-2af287bd728a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameBase\Collider">
+      <UniqueIdentifier>{6d4cb28a-8d84-4c63-814b-4c1ae8c9079b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -107,6 +110,9 @@
     </ClCompile>
     <ClCompile Include="Background.cpp">
       <Filter>GameBase\Entity\Map\Background</Filter>
+    </ClCompile>
+    <ClCompile Include="C2DBoxCollider.cpp">
+      <Filter>GameBase\Collider</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -175,6 +181,9 @@
     </ClInclude>
     <ClInclude Include="Background.h">
       <Filter>GameBase\Entity\Map\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="C2DBoxCollider.h">
+      <Filter>GameBase\Collider</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

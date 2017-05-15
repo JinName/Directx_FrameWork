@@ -17,7 +17,7 @@ CWinSetup::CWinSetup(HINSTANCE hInstance)
 	m_game(NULL)
 {
 	// 윈도우 크기 설정
-	m_rc = { 0, 0, 640, 480 };
+	m_rc = { 0, 0, 720, 420 };
 
 	//m_keyboard = new CKeyBoard;
 	

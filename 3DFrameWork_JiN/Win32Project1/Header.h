@@ -8,6 +8,7 @@
 #include <strsafe.h>
 #pragma warning( default : 4996 )
 
+#include <list>
 #include <stdio.h>
 #include <iostream>
 using namespace std;

@@ -58,6 +58,18 @@ bool CAru::Check_Reverse()
 	return false;
 }
 
+void CAru::Gravity()
+{
+	DWORD currentTime = GetTickCount();
+
+	DWORD TempTime = currentTime - dwOldtime;
+
+	velocity += 0.0098f * (float)TempTime / 60.0f;
+	dwOldtime = currentTime;
+	
+	m_vPos.y = m_vPos.y + velocity * (float)TempTime;
+}
+
 void CAru::Init(LPDIRECT3DDEVICE9 _pDevice)
 {
 	// 충돌박스 선 그리기
@@ -74,6 +86,9 @@ void CAru::Init(LPDIRECT3DDEVICE9 _pDevice)
 
 	// 애니매이션 넘버 ( 기본 = 0 )
 	m_iAnimate_Num = 0;
+
+	dwOldtime = GetTickCount();
+	velocity = 0.0f;
 	
 	// 캐릭터 스탠드 스프라이트
 	m_sprite[STAND].Create_Sprite(_pDevice, L"2D_Sprites\\Aru_stand_8peaces.bmp", 512, 64, 8, D3DCOLOR_XRGB(0, 170, 255));
@@ -85,6 +100,7 @@ void CAru::Init(LPDIRECT3DDEVICE9 _pDevice)
 
 void CAru::Update()
 {
+	Gravity();
 	Move();
 
 	Set_Animation();

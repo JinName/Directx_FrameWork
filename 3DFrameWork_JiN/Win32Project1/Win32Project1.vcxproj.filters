@@ -16,11 +16,11 @@
     <Filter Include="DXClass">
       <UniqueIdentifier>{17041943-0f22-468f-819b-011066f13c1a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameBase">
-      <UniqueIdentifier>{3147e9f8-9b55-466b-b135-9f86aebd4700}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GameManager">
       <UniqueIdentifier>{b217d22c-08fa-4e36-854e-d3ddb043b252}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameBase">
+      <UniqueIdentifier>{3147e9f8-9b55-466b-b135-9f86aebd4700}</UniqueIdentifier>
     </Filter>
     <Filter Include="GameBase\Scene">
       <UniqueIdentifier>{4766e3ed-d322-49cc-a4af-94e8a6d98993}</UniqueIdentifier>
@@ -34,6 +34,9 @@
     <Filter Include="GameBase\Entity\Map\Tiles">
       <UniqueIdentifier>{427f2b1b-162b-44d2-9c20-daf497f64558}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameBase\Entity\Map\Background">
+      <UniqueIdentifier>{5057e0dd-8a8f-4ea3-b3f5-2af287bd728a}</UniqueIdentifier>
+    </Filter>
     <Filter Include="GameBase\Entity\Character">
       <UniqueIdentifier>{a805c2b0-ff8f-47b6-9a69-96639712b7a8}</UniqueIdentifier>
     </Filter>
@@ -43,11 +46,14 @@
     <Filter Include="GameBase\Entity\Character\2D_Aru">
       <UniqueIdentifier>{15d060b7-4550-4c4d-a1d3-387d39417d08}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameBase\Entity\Map\Background">
-      <UniqueIdentifier>{5057e0dd-8a8f-4ea3-b3f5-2af287bd728a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GameBase\Collider">
       <UniqueIdentifier>{6d4cb28a-8d84-4c63-814b-4c1ae8c9079b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameManager\CollisionManager">
+      <UniqueIdentifier>{d05a1a32-a6ec-4013-acce-8a6b2aca64d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameManager\MapManager">
+      <UniqueIdentifier>{71af010f-b79e-4ec6-b8f3-29cec38ccccd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -113,6 +119,12 @@
     </ClCompile>
     <ClCompile Include="C2DBoxCollider.cpp">
       <Filter>GameBase\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionManager.cpp">
+      <Filter>GameManager\CollisionManager</Filter>
+    </ClCompile>
+    <ClCompile Include="MapManager.cpp">
+      <Filter>GameManager\MapManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -184,6 +196,12 @@
     </ClInclude>
     <ClInclude Include="C2DBoxCollider.h">
       <Filter>GameBase\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionManager.h">
+      <Filter>GameManager\CollisionManager</Filter>
+    </ClInclude>
+    <ClInclude Include="MapManager.h">
+      <Filter>GameManager\MapManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

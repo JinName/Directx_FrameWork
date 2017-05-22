@@ -105,7 +105,6 @@ VOID CWinSetup::Init()
 
 void CWinSetup::MsgLoop()
 {
-	
 	// 메세지 루프 - Update(), Render()
 	MSG msg;
 	ZeroMemory(&msg, sizeof(msg));

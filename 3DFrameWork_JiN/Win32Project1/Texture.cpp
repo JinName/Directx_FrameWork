@@ -10,11 +10,13 @@ CTexture::CTexture()
 
 CTexture::~CTexture()
 {
+	/*
 	if (m_pTexture != NULL)
 	{
 		m_pTexture->Release();
-		delete m_pTexture;
+		//delete m_pTexture;
 	}
+	*/
 }
 
 HRESULT CTexture::LoadTexture(LPDIRECT3DDEVICE9 _pDevice, std::wstring _filename, int _width, int _height, D3DCOLOR mask)

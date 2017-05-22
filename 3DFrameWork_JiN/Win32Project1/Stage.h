@@ -4,6 +4,8 @@
 #include "Background.h"
 #include "Aru.h"
 #include "Tile.h"
+#include "MapManager.h"
+#include "CollisionManager.h"
 
 class CStage : public CGameBase
 {
@@ -14,6 +16,11 @@ private:
 	CBackground m_Background;
 	CAru m_Player;
 	CTile m_Tile;
+
+	// 맵 매니저
+	CMapManager m_MapMngr;
+	// 충돌 처리 매니저
+	CCollisionManager m_CollisionMngr;
 
 public:
 	CStage();

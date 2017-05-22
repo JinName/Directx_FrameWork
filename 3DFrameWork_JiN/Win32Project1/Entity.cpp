@@ -10,12 +10,22 @@ CEntity::~CEntity()
 {
 }
 
-void CEntity::Set_Collider(float _width, float _height)
+void CEntity::Set_Collider(float _width, float _height, bool _centered_rect)
 {
-	m_rt.left = m_vPos.x - (_width / 2.0f);
-	m_rt.right = m_vPos.x + (_width / 2.0f);
-	m_rt.top = m_vPos.y + (_height / 2.0f);
-	m_rt.bottom = m_vPos.y - (_height / 2.0f);
+	if (_centered_rect)
+	{
+		m_rt.left = m_vPos.x - (_width / 2.0f);
+		m_rt.right = m_vPos.x + (_width / 2.0f);
+		m_rt.top = m_vPos.y - (_height / 2.0f);
+		m_rt.bottom = m_vPos.y + (_height / 2.0f);
+	}
+	else
+	{
+		m_rt.left = m_vPos.x;
+		m_rt.right = m_vPos.x + _width;
+		m_rt.top = m_vPos.y;
+		m_rt.bottom = m_vPos.y + _height;
+	}
 
 	vList[0] = D3DXVECTOR2(m_rt.left, m_rt.top);
 	vList[1] = D3DXVECTOR2(m_rt.right, m_rt.top);

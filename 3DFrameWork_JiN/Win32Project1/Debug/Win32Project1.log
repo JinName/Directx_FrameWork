@@ -1,3 +1,5 @@
-﻿  Tile.cpp
+﻿  Aru.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+c:\users\seungwon\desktop\workspace\d3d_framework\3dframework_jin\win32project1\aru.cpp(141): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   Win32Project1.vcxproj -> C:\Users\seungwon\Desktop\WorkSpace\d3d_framework\3DFrameWork_JiN\Debug\Win32Project1.exe
   Win32Project1.vcxproj -> C:\Users\seungwon\Desktop\WorkSpace\d3d_framework\3DFrameWork_JiN\Debug\Win32Project1.pdb (Full PDB)

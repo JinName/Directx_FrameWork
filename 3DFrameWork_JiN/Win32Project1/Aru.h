@@ -27,9 +27,19 @@ private:
 	// 속력
 	float velocity;
 
+	// 충돌 시 캐릭터 움직임 제어
+	bool isVertical; // 수직 충돌
+	bool isHorizontal; // 수평 충돌
+	bool isHit; // 피격
+
 public:
 	CAru();
 	~CAru();
+
+	// 충돌 시 변수 셋팅
+	void Set_isVertical(bool _isVertical) { isVertical = _isVertical; }
+	void Set_isHorizontal(bool _isHorizontal) { isHorizontal = _isHorizontal; }
+	void Set_isHit(bool _isHit) { isHit = _isHit; }
 
 	// 방향에 따른 애니매이션 번호 지정 함수
 	void Set_Animation();
@@ -38,6 +48,11 @@ public:
 
 	// 캐릭터 중력
 	void Gravity();
+
+	// 캐릭터가 타일과 충돌 시 움직임
+	void isCrash_Tile();
+	// 적과 부딪혔을때
+	void isCrash_Enemy();
 
 	void Init(LPDIRECT3DDEVICE9 _pDevice);
 	void Update();

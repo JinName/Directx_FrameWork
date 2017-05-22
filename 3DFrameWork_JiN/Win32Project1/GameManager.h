@@ -4,6 +4,7 @@
 #include "Camera.h"
 #include "Stage.h"
 
+
 class CGameManager
 {
 private:
@@ -14,6 +15,7 @@ private:
 
 	HWND m_hWnd;
 	HINSTANCE m_hInstance;
+	
 public:
 	CGameManager();
 	CGameManager(HINSTANCE _hInstance, HWND _hWnd);

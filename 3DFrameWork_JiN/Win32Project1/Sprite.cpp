@@ -107,6 +107,7 @@ void CSprite::CleanUp()
 {
 	if (m_pSprite != NULL)
 	{
+		m_pTexture->Release();
 		m_pSprite->Release();
 	}
 }

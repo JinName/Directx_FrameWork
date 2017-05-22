@@ -18,7 +18,7 @@ public:
 	CTile();
 	~CTile();
 
-	void Init(LPDIRECT3DDEVICE9 _pDevice, TILE_STYLE _STYLE);
+	void Init(LPDIRECT3DDEVICE9 _pDevice, TILE_STYLE _STYLE, D3DXVECTOR3 _vPos);
 	void Update();
 	void Render();
 	void Clean();

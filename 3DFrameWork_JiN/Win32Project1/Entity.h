@@ -28,7 +28,7 @@ public:
 	void Draw_RectLine();
 
 	// 충돌 박스 셋팅
-	void Set_Collider(float _width, float _height);
+	void Set_Collider(float _width, float _height, bool _centered_rect);
 
 	// 기본 포지션 변환 함수
 	void Set_Position(float _x, float _y, float _z) {

@@ -46,14 +46,14 @@
     <Filter Include="GameBase\Entity\Character\2D_Aru">
       <UniqueIdentifier>{15d060b7-4550-4c4d-a1d3-387d39417d08}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameBase\Collider">
-      <UniqueIdentifier>{6d4cb28a-8d84-4c63-814b-4c1ae8c9079b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GameManager\CollisionManager">
       <UniqueIdentifier>{d05a1a32-a6ec-4013-acce-8a6b2aca64d1}</UniqueIdentifier>
     </Filter>
     <Filter Include="GameManager\MapManager">
       <UniqueIdentifier>{71af010f-b79e-4ec6-b8f3-29cec38ccccd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameManager\CollisionManager\Collider">
+      <UniqueIdentifier>{6d4cb28a-8d84-4c63-814b-4c1ae8c9079b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -117,14 +117,14 @@
     <ClCompile Include="Background.cpp">
       <Filter>GameBase\Entity\Map\Background</Filter>
     </ClCompile>
-    <ClCompile Include="C2DBoxCollider.cpp">
-      <Filter>GameBase\Collider</Filter>
-    </ClCompile>
     <ClCompile Include="CollisionManager.cpp">
       <Filter>GameManager\CollisionManager</Filter>
     </ClCompile>
     <ClCompile Include="MapManager.cpp">
       <Filter>GameManager\MapManager</Filter>
+    </ClCompile>
+    <ClCompile Include="2DBoxCollider.cpp">
+      <Filter>GameManager\CollisionManager\Collider</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -194,14 +194,14 @@
     <ClInclude Include="Background.h">
       <Filter>GameBase\Entity\Map\Background</Filter>
     </ClInclude>
-    <ClInclude Include="C2DBoxCollider.h">
-      <Filter>GameBase\Collider</Filter>
-    </ClInclude>
     <ClInclude Include="CollisionManager.h">
       <Filter>GameManager\CollisionManager</Filter>
     </ClInclude>
     <ClInclude Include="MapManager.h">
       <Filter>GameManager\MapManager</Filter>
+    </ClInclude>
+    <ClInclude Include="2DBoxCollider.h">
+      <Filter>GameManager\CollisionManager\Collider</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

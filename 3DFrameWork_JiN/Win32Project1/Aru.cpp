@@ -59,19 +59,47 @@ bool CAru::Check_Reverse()
 }
 
 void CAru::Gravity()
-{
+{	
 	DWORD currentTime = GetTickCount();
 
 	DWORD TempTime = currentTime - dwOldtime;
-
-	velocity += 0.0098f * (float)TempTime / 60.0f;
+		
 	dwOldtime = currentTime;
-	
-	m_vPos.y = m_vPos.y + velocity * (float)TempTime;
+
+	if (!isVertical && !isHorizontal)
+	{
+		velocity += 0.0098f * (float)TempTime / 60.0f;
+		m_vPos.y = m_vPos.y + velocity * (float)TempTime;
+	}
+	else
+	{
+		velocity = 0.0f;
+	}
+}
+
+void CAru::isCrash_Tile()
+{
+	if (isVertical)
+	{
+		m_vPos.y = m_vPos.y;
+	}
+	else if (isHorizontal)
+	{
+		m_vPos.x = m_vPos.x;
+	}
+}
+
+void CAru::isCrash_Enemy()
+{
+
 }
 
 void CAru::Init(LPDIRECT3DDEVICE9 _pDevice)
 {
+	bool isVertical = false; // 수직 충돌
+	bool isHorizontal = false; // 수평 충돌
+	bool isHit = false; // 피격
+
 	// 충돌박스 선 그리기
 	Line_Init(_pDevice);
 
@@ -100,6 +128,7 @@ void CAru::Init(LPDIRECT3DDEVICE9 _pDevice)
 
 void CAru::Update()
 {
+	isCrash_Tile();
 	Gravity();
 	Move();
 
@@ -107,7 +136,7 @@ void CAru::Update()
 
 	m_sprite[m_iAnimate_Num].Animation_Frame();
 
-	Set_Collider(m_sprite[m_iAnimate_Num].Get_Sprite_Width(), m_sprite[m_iAnimate_Num].Get_Sprite_Height());
+	Set_Collider(m_sprite[m_iAnimate_Num].Get_Sprite_Width(), m_sprite[m_iAnimate_Num].Get_Sprite_Height(), true);
 }
 
 void CAru::Render()

@@ -55,6 +55,9 @@
     <Filter Include="GameManager\CollisionManager\Collider">
       <UniqueIdentifier>{6d4cb28a-8d84-4c63-814b-4c1ae8c9079b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameBase\Entity\Monster">
+      <UniqueIdentifier>{6190d18a-fb2c-478f-8a58-cc2fadf24f26}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -125,6 +128,9 @@
     </ClCompile>
     <ClCompile Include="2DBoxCollider.cpp">
       <Filter>GameManager\CollisionManager\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster.cpp">
+      <Filter>GameBase\Entity\Monster</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -202,6 +208,9 @@
     </ClInclude>
     <ClInclude Include="2DBoxCollider.h">
       <Filter>GameManager\CollisionManager\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster.h">
+      <Filter>GameBase\Entity\Monster</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

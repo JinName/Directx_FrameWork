@@ -11,9 +11,21 @@ private:
 	// 스탠드, 상 하 좌(우), 공격
 	CSprite m_sprite[5];
 
+	// 캐릭터 속도
+	float m_fSpeed;
+
+	// 캐릭터 방향
+	D3DXVECTOR2 m_vDirection;
+
 	// 행동 변수
 	bool m_bAttacking;
 	bool m_bJump;
+	// 점프 용도
+	// 점프 가능한 상태일때 true (바닥에 붙어있을때)
+	bool m_bJump_is_Possible;
+	// 점프할 때 점프전 셋팅
+	float m_fOld_Pos_y;
+	bool m_bOld_Check;
 
 	// 마지막 움직인 방향 ( 좌우 스프라이트 반전용 )
 	int currentDirection;
@@ -24,6 +36,7 @@ private:
 
 	// 중력계산용 시간
 	DWORD dwOldtime;
+	float m_fCharacter_mass; // 캐릭터 질량
 	// 속력
 	float velocity;
 
@@ -48,11 +61,16 @@ public:
 
 	// 캐릭터 중력
 	void Gravity();
+	// 캐릭터 점프
+	void Jump();
 
 	// 캐릭터가 타일과 충돌 시 움직임
 	void isCrash_Tile();
 	// 적과 부딪혔을때
 	void isCrash_Enemy();
+
+	// Move
+	VOID Move();
 
 	void Init(LPDIRECT3DDEVICE9 _pDevice);
 	void Update();

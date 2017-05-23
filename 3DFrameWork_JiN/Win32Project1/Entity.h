@@ -4,6 +4,7 @@
 class CEntity
 {
 protected:
+	// 위치 Position
 	D3DXVECTOR3 m_vPos;
 
 	// 충돌 박스
@@ -29,6 +30,7 @@ public:
 
 	// 충돌 박스 셋팅
 	void Set_Collider(float _width, float _height, bool _centered_rect);
+	void Set_Collider(float _width, float _height, bool _centered_rect, RECT _detail_rect);
 
 	// 기본 포지션 변환 함수
 	void Set_Position(float _x, float _y, float _z) {

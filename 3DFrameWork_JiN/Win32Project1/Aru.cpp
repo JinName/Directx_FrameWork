@@ -58,6 +58,19 @@ bool CAru::Check_Reverse()
 	return false;
 }
 
+void CAru::Jump()
+{
+	if (m_bJump)
+	{
+		if (!m_bOld_Check)
+		{
+			m_fOld_Pos_y = m_vPos.y;
+			m_bOld_Check = true;
+		}
+		m_vPos.y -= 5.5f;
+	}
+}
+
 void CAru::Gravity()
 {	
 	DWORD currentTime = GetTickCount();
@@ -66,10 +79,10 @@ void CAru::Gravity()
 		
 	dwOldtime = currentTime;
 
-	if (!isVertical && !isHorizontal)
+	if (!isVertical)
 	{
 		velocity += 0.0098f * (float)TempTime / 60.0f;
-		m_vPos.y = m_vPos.y + velocity * (float)TempTime;
+		m_vPos.y = m_vPos.y + velocity * (float)TempTime * m_fCharacter_mass;
 	}
 	else
 	{
@@ -82,10 +95,19 @@ void CAru::isCrash_Tile()
 	if (isVertical)
 	{
 		m_vPos.y = m_vPos.y;
+		m_bJump = false;
+		m_bOld_Check = false;
+		m_bJump_is_Possible = true;
 	}
 	else if (isHorizontal)
 	{
 		m_vPos.x = m_vPos.x;
+		m_bJump = false;
+		m_bOld_Check = false;
+	}
+	else
+	{
+		m_bJump_is_Possible = false;
 	}
 }
 
@@ -96,9 +118,14 @@ void CAru::isCrash_Enemy()
 
 void CAru::Init(LPDIRECT3DDEVICE9 _pDevice)
 {
-	bool isVertical = false; // 수직 충돌
-	bool isHorizontal = false; // 수평 충돌
-	bool isHit = false; // 피격
+	m_fSpeed = 3.0f;
+	m_vDirection = { 0.0f, 0.0f };
+	// 캐릭 질량
+	m_fCharacter_mass = 4.0f;
+
+	isVertical = false; // 수직 충돌
+	isHorizontal = false; // 수평 충돌
+	isHit = false; // 피격
 
 	// 충돌박스 선 그리기
 	Line_Init(_pDevice);
@@ -108,6 +135,12 @@ void CAru::Init(LPDIRECT3DDEVICE9 _pDevice)
 
 	// 공격 중인지
 	m_bAttacking = false;
+
+	// 점프 관련
+	m_bJump_is_Possible = false; // 바닥에 붙어있을때만 true
+	m_bJump = false;
+	m_fOld_Pos_y = 0.0f;
+	m_bOld_Check = false;
 
 	// 마지막 움직인 방향 ( 좌우 스프라이트 반전용 )
 	currentDirection = LEFT;
@@ -129,14 +162,17 @@ void CAru::Init(LPDIRECT3DDEVICE9 _pDevice)
 void CAru::Update()
 {
 	isCrash_Tile();
-	Gravity();
+	
 	Move();
+
+	Jump();
+	Gravity();
 
 	Set_Animation();
 
 	m_sprite[m_iAnimate_Num].Animation_Frame();
 
-	Set_Collider(m_sprite[m_iAnimate_Num].Get_Sprite_Width(), m_sprite[m_iAnimate_Num].Get_Sprite_Height(), true);
+	Set_Collider(m_sprite[m_iAnimate_Num].Get_Sprite_Width() - 20.0f, m_sprite[m_iAnimate_Num].Get_Sprite_Height(), true, RECT{0, 20, 0, 0});
 }
 
 void CAru::Render()
@@ -150,5 +186,56 @@ void CAru::Clean()
 	for (int i = 0; i < 5; ++i)
 	{
 		m_sprite[i].CleanUp();
+	}
+}
+
+VOID CAru::Move()
+{
+	if (CInput::Get_Instance()->IsKeyPressed(DIK_LEFT) == true)
+	{
+		if (!isHorizontal)
+		{
+			m_vPos.x -= m_fSpeed;
+			m_vDirection.x = -1.0f;
+		}		
+	}
+	else if (CInput::Get_Instance()->IsKeyPressed(DIK_RIGHT) == true)
+	{
+		if (!isHorizontal)
+		{
+			m_vPos.x += m_fSpeed;
+			m_vDirection.x = 1.0f;
+		}
+	}
+	else if (CInput::Get_Instance()->IsKeyPressed(DIK_UP) == true)
+	{
+		m_vPos.y -= m_fSpeed;
+		m_vDirection.y = -1.0f;
+	}
+	else if (CInput::Get_Instance()->IsKeyPressed(DIK_DOWN) == true)
+	{
+		m_vPos.y += m_fSpeed;
+		m_vDirection.y = 1.0f;
+	}
+
+	// JUMP
+	if (m_bJump_is_Possible)
+	{
+		if (CInput::Get_Instance()->IsKeyPressed(DIK_SPACE) == true)
+		{
+			if (!m_bOld_Check)
+			{
+				m_bJump = true;
+			}
+		}
+	}
+	
+
+	if (CInput::Get_Instance()->IsKeyPressed(DIK_LEFT) == false &&
+		CInput::Get_Instance()->IsKeyPressed(DIK_RIGHT) == false &&
+		CInput::Get_Instance()->IsKeyPressed(DIK_UP) == false &&
+		CInput::Get_Instance()->IsKeyPressed(DIK_DOWN) == false)
+	{
+		m_vDirection = { 0.0f, 0.0f };
 	}
 }

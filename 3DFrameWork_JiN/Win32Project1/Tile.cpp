@@ -13,22 +13,22 @@ void CTile::Init(LPDIRECT3DDEVICE9 _pDevice, TILE_STYLE _STYLE, D3DXVECTOR3 _vPo
 	Line_Init(_pDevice);
 	//m_vPos = { 200.0f, 200.0f, 0.0f };
 	m_vPos = _vPos;
-	_STYLE = STYLE_LONG;
+	//_STYLE = STYLE_LONG;
 	switch(_STYLE)
 	{
 	case STYLE_LONG:
 		m_Sprite.Create_Sprite(_pDevice, L"Objects\\LongTile.PNG", 433, 84, 1, NULL);
-		Set_Collider(433, 84, false);
+		Set_Collider(433, 84, false, RECT{ 8, 23, -8, 0 });
 		break;
 
 	case STYLE_MID:
 		m_Sprite.Create_Sprite(_pDevice, L"Objects\\MidTile.PNG", 267, 79, 1, NULL);
-		Set_Collider(267, 79, false);
+		Set_Collider(267, 79, false, RECT{ 8, 23, -8, -5 });
 		break;
 
 	case STYLE_SHORT:
 		m_Sprite.Create_Sprite(_pDevice, L"Objects\\ShortTile.PNG", 168, 76, 1, NULL);
-		Set_Collider(168, 76, false);
+		Set_Collider(168, 76, false, RECT{ 8, 23, -8, -5 });
 		break;
 	}
 	m_Sprite.Set_Animation_Switch(false);

@@ -16,13 +16,13 @@ void CCollisionManager::Init()
 	m_boxCollider.Init();
 }
 
-void CCollisionManager::Update(list<RECT> &_tileList, CAru &_aru)
+void CCollisionManager::Update(list<RECT> &_Rect_List, CAru &_aru)
 {
-	std::list<RECT>::iterator begin_iter = _tileList.begin();
-	std::list<RECT>::iterator end_iter = _tileList.end();
+	std::list<RECT>::iterator begin_iter = _Rect_List.begin();
+	std::list<RECT>::iterator end_iter = _Rect_List.end();
 	int count = 0;
 
-	for (int i = 0; i < _tileList.size(); i++)
+	for (int i = 0; i < _Rect_List.size(); i++)
 	{
 		if (m_boxCollider.isIntersect(*begin_iter, (&_aru)->Get_Collider()))
 		{

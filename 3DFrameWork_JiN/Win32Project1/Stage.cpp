@@ -20,6 +20,9 @@ void CStage::OnInit(LPDIRECT3DDEVICE9 _pDevice)
 	m_MapMngr.StageMap_Init(_pDevice, m_iStageNum);
 	m_CollisionMngr.Init();
 
+	// monster initialize
+	m_Monster.Init(_pDevice);
+
 	// player initialize
 	m_Player.Init(_pDevice);
 }
@@ -27,6 +30,7 @@ void CStage::OnInit(LPDIRECT3DDEVICE9 _pDevice)
 void CStage::OnUpdate(LPDIRECT3DDEVICE9 _pDevice)
 {
 	m_MapMngr.StageMap_Update();
+	m_Monster.Update();
 	m_Player.Update();
 
 	// 매 프래임 마다 타일과 캐릭터 상태를 확인
@@ -37,11 +41,13 @@ void CStage::OnRender(LPDIRECT3DDEVICE9 _pDevice)
 {
 	m_MapMngr.StageMap_Render();
 	m_Player.Render();
+	m_Monster.Render();
 }
 
 void CStage::OnCleanup(LPDIRECT3DDEVICE9 _pDevice)
 {
 	m_MapMngr.StageMap_Cleanup();
 	m_Player.Clean();
+	m_Monster.Clean();
 }
 

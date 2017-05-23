@@ -16,6 +16,6 @@ public:
 	~CCollisionManager();
 
 	void Init();
-	void Update(list<RECT> &_tileList, CAru &_aru);
+	void Update(list<RECT> &_Rect_List, CAru &_aru);
 };
 

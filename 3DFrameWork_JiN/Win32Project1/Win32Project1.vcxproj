@@ -98,6 +98,7 @@
     <ClCompile Include="Light.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="Meshes.cpp" />
+    <ClCompile Include="Monster.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="Texture.cpp" />
@@ -123,6 +124,7 @@
     <ClInclude Include="Light.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="Meshes.h" />
+    <ClInclude Include="Monster.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Stage.h" />

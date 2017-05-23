@@ -3,7 +3,6 @@
 CWinSetup::CWinSetup()
 	:m_hWnd(NULL),
 	m_hInst(NULL),
-	//m_keyboard(NULL),
 	m_game(NULL)
 {
 	// 윈도우 크기 설정
@@ -13,14 +12,10 @@ CWinSetup::CWinSetup()
 CWinSetup::CWinSetup(HINSTANCE hInstance)
 	:m_hWnd(NULL),
 	m_hInst(hInstance),
-	//m_keyboard(NULL),
 	m_game(NULL)
 {
 	// 윈도우 크기 설정
-	m_rc = { 0, 0, 720, 420 };
-
-	//m_keyboard = new CKeyBoard;
-	
+	m_rc = { 0, 0, 960, 720 };	
 }
 
 // 변수값의 변화를 반영하기 위한 MsgProc - 일반 멤버변수에 접근 가능

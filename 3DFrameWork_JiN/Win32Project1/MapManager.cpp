@@ -17,10 +17,29 @@ void CMapManager::Create_Background(LPDIRECT3DDEVICE9 _pDevice, int _iStageNum)
 
 void CMapManager::Create_Tiles(LPDIRECT3DDEVICE9 _pDevice, int _iStageNum)
 {
-	m_Tile.Init(_pDevice, STYLE_LONG, D3DXVECTOR3(0.0f, 200.0f, 0.0f));
+	m_Tile[0].Init(_pDevice, STYLE_LONG, D3DXVECTOR3(-15.0f, 640.0f, 0.0f));
+	m_Collider_List.push_back(m_Tile[0].Get_Collider());
+
+	m_Tile[1].Init(_pDevice, STYLE_SHORT, D3DXVECTOR3(470.0f, 540.0f, 0.0f));
+	m_Collider_List.push_back(m_Tile[1].Get_Collider());
+
+	m_Tile[2].Init(_pDevice, STYLE_LONG, D3DXVECTOR3(720.0f, 590.0f, 0.0f));
+	m_Collider_List.push_back(m_Tile[2].Get_Collider());
+
+	m_Tile[3].Init(_pDevice, STYLE_MID, D3DXVECTOR3(165.0f, 470.0f, 0.0f));
+	m_Collider_List.push_back(m_Tile[3].Get_Collider());
 	
-	m_TileList.push_back(m_Tile);
-	m_Collider_List.push_back(m_Tile.Get_Collider());
+	m_Tile[4].Init(_pDevice, STYLE_LONG, D3DXVECTOR3(560.0f, 370.0f, 0.0f));
+	m_Collider_List.push_back(m_Tile[4].Get_Collider());
+
+	m_Tile[5].Init(_pDevice, STYLE_LONG, D3DXVECTOR3(0.0f, 200.0f, 0.0f));
+	m_Collider_List.push_back(m_Tile[5].Get_Collider());
+
+	m_Tile[6].Init(_pDevice, STYLE_LONG, D3DXVECTOR3(0.0f, 200.0f, 0.0f));
+	m_Collider_List.push_back(m_Tile[6].Get_Collider());
+
+	m_Tile[7].Init(_pDevice, STYLE_LONG, D3DXVECTOR3(0.0f, 200.0f, 0.0f));
+	m_Collider_List.push_back(m_Tile[7].Get_Collider());
 }
 
 void CMapManager::StageMap_Init(LPDIRECT3DDEVICE9 _pDevice, int _iStageNum)
@@ -38,13 +57,9 @@ void CMapManager::StageMap_Render()
 {
 	m_Background.Render();
 
-	std::list<CTile>::iterator begin_iter = m_TileList.begin();
-	std::list<CTile>::iterator end_iter = m_TileList.end();
-
-	while (begin_iter != end_iter)
+	for (int i = 0; i < 8; ++i)
 	{
-		begin_iter->Render();
-		begin_iter++;
+		m_Tile[i].Render();
 	}
 }
 
@@ -52,12 +67,8 @@ void CMapManager::StageMap_Cleanup()
 {
 	m_Background.Clean();
 
-	std::list<CTile>::iterator begin_iter = m_TileList.begin();
-	std::list<CTile>::iterator end_iter = m_TileList.end();
-
-	while (begin_iter != end_iter)
+	for (int i = 0; i < 8; ++i)
 	{
-		begin_iter->Clean();
-		begin_iter++;
+		m_Tile[i].Clean();
 	}
 }

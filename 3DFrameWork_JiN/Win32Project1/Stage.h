@@ -6,6 +6,7 @@
 #include "Tile.h"
 #include "MapManager.h"
 #include "CollisionManager.h"
+#include "Monster.h"
 
 class CStage : public CGameBase
 {
@@ -16,6 +17,7 @@ private:
 	CBackground m_Background;
 	CAru m_Player;
 	CTile m_Tile;
+	CMonster m_Monster;
 
 	// ¸Ê ¸Å´ÏÀú
 	CMapManager m_MapMngr;

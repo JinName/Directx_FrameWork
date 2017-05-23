@@ -26,7 +26,7 @@ bool C2DBoxCollider::isIntersect(RECT _A, RECT _B)
 		if (_A.left <= _B.left)
 		{
 			// B가 A의 위쪽
-			if (_A.bottom <= _B.bottom)
+			if (_A.bottom >= _B.bottom)
 			{
 				if (std::labs(_A.right - _B.left) > std::labs(_B.bottom - _A.top))
 				{
@@ -52,7 +52,7 @@ bool C2DBoxCollider::isIntersect(RECT _A, RECT _B)
 		else // B가 A의 왼쪽
 		{
 			// B가 A의 위쪽
-			if (_A.bottom <= _B.bottom)
+			if (_A.bottom >= _B.bottom)
 			{
 				if (std::labs(_B.right - _A.left) > std::labs(_B.bottom - _A.top))
 				{

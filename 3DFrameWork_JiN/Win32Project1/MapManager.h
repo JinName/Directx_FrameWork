@@ -12,7 +12,7 @@ private:
 
 	// ¸Ê ±¸¼º °´Ã¼µé
 	CBackground m_Background;
-	CTile m_Tile;
+	CTile m_Tile[8];
 
 	list<CTile> m_TileList;
 

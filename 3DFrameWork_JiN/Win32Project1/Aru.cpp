@@ -65,9 +65,10 @@ void CAru::Jump()
 		if (!m_bOld_Check)
 		{
 			m_fOld_Pos_y = m_vPos.y;
+			m_bCollision_is_Possible = false;
 			m_bOld_Check = true;
 		}
-		m_vPos.y -= 5.5f;
+		m_vPos.y -= m_fJump_Power;
 	}
 }
 
@@ -82,10 +83,12 @@ void CAru::Gravity()
 	if (!isVertical)
 	{
 		velocity += 0.0098f * (float)TempTime / 60.0f;
-		m_vPos.y = m_vPos.y + velocity * (float)TempTime * m_fCharacter_mass;
+		m_fGravity_Accel = velocity * (float)TempTime * m_fCharacter_mass;
+		m_vPos.y = m_vPos.y + m_fGravity_Accel;
 	}
 	else
 	{
+		m_fGravity_Accel = 0.0f;
 		velocity = 0.0f;
 	}
 }
@@ -99,16 +102,19 @@ void CAru::isCrash_Tile()
 		m_bOld_Check = false;
 		m_bJump_is_Possible = true;
 	}
+	else
+	{
+		m_bJump_is_Possible = false;
+	}
+	/*
 	else if (isHorizontal)
 	{
 		m_vPos.x = m_vPos.x;
 		m_bJump = false;
 		m_bOld_Check = false;
 	}
-	else
-	{
-		m_bJump_is_Possible = false;
-	}
+	*/
+	
 }
 
 void CAru::isCrash_Enemy()
@@ -116,9 +122,22 @@ void CAru::isCrash_Enemy()
 
 }
 
+void CAru::Check_Collision_is_Possible()
+{
+	if (m_bJump)
+	{
+		if (m_fGravity_Accel > m_fJump_Power)
+		{
+			m_bCollision_is_Possible = true;
+		}
+	}
+}
+
 void CAru::Init(LPDIRECT3DDEVICE9 _pDevice)
 {
 	m_fSpeed = 3.0f;
+	m_fJump_Power = 5.5f;
+	m_fGravity_Accel = 0.0f;
 	m_vDirection = { 0.0f, 0.0f };
 	// 캐릭 질량
 	m_fCharacter_mass = 4.0f;
@@ -138,6 +157,7 @@ void CAru::Init(LPDIRECT3DDEVICE9 _pDevice)
 
 	// 점프 관련
 	m_bJump_is_Possible = false; // 바닥에 붙어있을때만 true
+	m_bCollision_is_Possible = true; // 점프 중일때 false
 	m_bJump = false;
 	m_fOld_Pos_y = 0.0f;
 	m_bOld_Check = false;
@@ -162,6 +182,7 @@ void CAru::Init(LPDIRECT3DDEVICE9 _pDevice)
 void CAru::Update()
 {
 	isCrash_Tile();
+	Check_Collision_is_Possible();
 	
 	Move();
 

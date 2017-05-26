@@ -13,6 +13,7 @@ private:
 	// 맵 구성 객체들
 	CBackground m_Background;
 	CTile m_Tile[8];
+	int m_TileArray_Len;
 
 	list<CTile> m_TileList;
 
@@ -30,6 +31,8 @@ public:
 	void StageMap_Cleanup();
 
 	// 타일리스트 반환
+	CTile* Get_TileArray() { return m_Tile; }
+	int Get_TileArray_Len() { return m_TileArray_Len; }
 	list<CTile> Get_TileList() { return m_TileList; }
 	// 충돌박스 리스트 반환
 	list<RECT> Get_Collider_List() { return m_Collider_List; }

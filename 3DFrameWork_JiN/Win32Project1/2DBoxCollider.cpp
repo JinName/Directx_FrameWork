@@ -84,6 +84,18 @@ bool C2DBoxCollider::isIntersect(RECT _A, RECT _B)
 	return false;
 }
 
+bool C2DBoxCollider::Player_upCheck(RECT _A, RECT _B)
+{
+	if (_A.bottom < _B.top)
+	{
+		if (_A.left < _B.right && _A.right > _B.left)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
 int C2DBoxCollider::Get_Vertical_or_Horizontal()
 {
 	if (isVertical == true && isHorizontal == false)

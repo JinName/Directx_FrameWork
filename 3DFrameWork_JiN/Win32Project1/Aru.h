@@ -20,12 +20,21 @@ private:
 	// 행동 변수
 	bool m_bAttacking;
 	bool m_bJump;
+	float m_fJump_Power;
+	float m_fGravity_Accel;
 	// 점프 용도
 	// 점프 가능한 상태일때 true (바닥에 붙어있을때)
 	bool m_bJump_is_Possible;
+	// 점프시 충돌 가능상태
+	bool m_bCollision_is_Possible;
 	// 점프할 때 점프전 셋팅
 	float m_fOld_Pos_y;
 	bool m_bOld_Check;
+
+	// 타일 충돌박스 밑에서 올라갈 경우
+	// 충돌 준비가 됐을 경우 true;
+	// 비교대상인 충돌박스보다 확실하게 위로 올라갔을때 true로
+	bool m_bReady_to_Collision;
 
 	// 마지막 움직인 방향 ( 좌우 스프라이트 반전용 )
 	int currentDirection;
@@ -49,6 +58,8 @@ public:
 	CAru();
 	~CAru();
 
+	// 충돌 가능상태인지
+	bool Get_Collision_is_Possible() { return m_bCollision_is_Possible; }
 	// 충돌 시 변수 셋팅
 	void Set_isVertical(bool _isVertical) { isVertical = _isVertical; }
 	void Set_isHorizontal(bool _isHorizontal) { isHorizontal = _isHorizontal; }
@@ -68,6 +79,8 @@ public:
 	void isCrash_Tile();
 	// 적과 부딪혔을때
 	void isCrash_Enemy();
+
+	void Check_Collision_is_Possible();
 
 	// Move
 	VOID Move();

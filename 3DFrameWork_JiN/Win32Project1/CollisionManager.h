@@ -17,5 +17,6 @@ public:
 
 	void Init();
 	void Update(list<RECT> &_Rect_List, CAru &_aru);
+	void Update(CTile* _Tile_Array, int _Tile_Array_Len, CAru &_aru);
 };
 

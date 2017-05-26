@@ -40,6 +40,8 @@ void CMapManager::Create_Tiles(LPDIRECT3DDEVICE9 _pDevice, int _iStageNum)
 
 	m_Tile[7].Init(_pDevice, STYLE_LONG, D3DXVECTOR3(0.0f, 200.0f, 0.0f));
 	m_Collider_List.push_back(m_Tile[7].Get_Collider());
+
+	m_TileArray_Len = 8;
 }
 
 void CMapManager::StageMap_Init(LPDIRECT3DDEVICE9 _pDevice, int _iStageNum)

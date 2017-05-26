@@ -1,6 +1,5 @@
-﻿  Tile.cpp
-  Character.cpp
+﻿  CollisionManager.cpp
   c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-  코드를 생성하고 있습니다...
+c:\users\seungwon\desktop\workspace\d3d_framework\3dframework_jin\win32project1\collisionmanager.cpp(25): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
   Win32Project1.vcxproj -> C:\Users\seungwon\Desktop\WorkSpace\d3d_framework\3DFrameWork_JiN\Debug\Win32Project1.exe
   Win32Project1.vcxproj -> C:\Users\seungwon\Desktop\WorkSpace\d3d_framework\3DFrameWork_JiN\Debug\Win32Project1.pdb (Full PDB)

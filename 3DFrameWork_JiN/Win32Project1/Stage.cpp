@@ -34,7 +34,7 @@ void CStage::OnUpdate(LPDIRECT3DDEVICE9 _pDevice)
 	m_Player.Update();
 
 	// 매 프래임 마다 타일과 캐릭터 상태를 확인
-	m_CollisionMngr.Update(m_MapMngr.Get_Collider_List(), m_Player);
+	m_CollisionMngr.Update(m_MapMngr.Get_TileArray(), 8, m_Player);
 }
 
 void CStage::OnRender(LPDIRECT3DDEVICE9 _pDevice)

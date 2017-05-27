@@ -31,7 +31,9 @@ void CStage::OnUpdate(LPDIRECT3DDEVICE9 _pDevice)
 {
 	m_MapMngr.StageMap_Update();
 	m_Monster.Update();
-	m_Player.Update();
+
+	// FireBall 생성을 위해 디바이스 필요
+	m_Player.Update(_pDevice);
 
 	// 매 프래임 마다 타일과 캐릭터 상태를 확인
 	m_CollisionMngr.Update(m_MapMngr.Get_TileArray(), 8, m_Player);

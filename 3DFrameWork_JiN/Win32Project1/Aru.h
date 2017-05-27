@@ -2,6 +2,7 @@
 #include "Header.h"
 #include "Character.h"
 #include "Sprite.h"
+#include "FireBall.h"
 
 enum{ STAND, UP, DOWN, LEFT, ATTACK };
 
@@ -10,6 +11,13 @@ class CAru : public CCharacter
 private:
 	// 스탠드, 상 하 좌(우), 공격
 	CSprite m_sprite[5];
+	CSprite m_Run_Particle_Sprite;
+
+	// FireBall Sprite 미리 로드해놓고 텍스처값만 넘겨주는 방식
+	CSprite m_FireBall;
+	CSprite m_FireBall_Hit;
+
+	list<CFireBall*> m_FireBall_List;
 
 	// 캐릭터 속도
 	float m_fSpeed;
@@ -20,6 +28,7 @@ private:
 	// 행동 변수
 	bool m_bAttacking;
 	bool m_bJump;
+	bool m_b_isRunning;
 	float m_fJump_Power;
 	float m_fGravity_Accel;
 	// 점프 용도
@@ -80,13 +89,19 @@ public:
 	// 적과 부딪혔을때
 	void isCrash_Enemy();
 
+	// 충돌 가능한 상태인지
 	void Check_Collision_is_Possible();
 
-	// Move
-	VOID Move();
+	// FireBall Update()
+	void Skill_Update();
+	void Skill_Render();
+	void Skill_Clean();
+
+	// KeyInput
+	VOID KeyInput(LPDIRECT3DDEVICE9 _pDevice);
 
 	void Init(LPDIRECT3DDEVICE9 _pDevice);
-	void Update();
+	void Update(LPDIRECT3DDEVICE9 _pDevice);
 	void Render();
 	void Clean();
 };

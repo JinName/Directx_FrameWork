@@ -58,6 +58,9 @@
     <Filter Include="GameBase\Entity\Monster">
       <UniqueIdentifier>{6190d18a-fb2c-478f-8a58-cc2fadf24f26}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameBase\Entity\Character\2D_Aru\FireBall">
+      <UniqueIdentifier>{e747d230-eaba-4489-b704-45c1f7598454}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -131,6 +134,9 @@
     </ClCompile>
     <ClCompile Include="Monster.cpp">
       <Filter>GameBase\Entity\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="FireBall.cpp">
+      <Filter>GameBase\Entity\Character\2D_Aru\FireBall</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -211,6 +217,9 @@
     </ClInclude>
     <ClInclude Include="Monster.h">
       <Filter>GameBase\Entity\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="FireBall.h">
+      <Filter>GameBase\Entity\Character\2D_Aru\FireBall</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

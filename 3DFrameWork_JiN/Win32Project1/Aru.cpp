@@ -27,10 +27,6 @@ void CAru::Set_Animation()
 	else if (m_vDirection.x > 0 || m_vDirection.x < 0)
 	{
 		m_iAnimate_Num = 3;
-		if (m_vDirection.x < 0)
-			currentDirection = LEFT;
-		else if (m_vDirection.x > 0)
-			currentDirection = -LEFT;
 	}
 	else if (m_bAttacking == true)
 	{
@@ -40,11 +36,11 @@ void CAru::Set_Animation()
 
 bool CAru::Check_Reverse()
 {
-	if (m_vDirection.x == 0 && m_vDirection.y == 0)
+	if (m_vDirection.x == 0)
 	{
-		if (currentDirection == LEFT)
+		if (currentDirection == -1)
 			return false;
-		else if (currentDirection == -LEFT)
+		else if (currentDirection == 1)
 			return true;
 	}
 	else if (m_vDirection.x > 0 || m_vDirection.x < 0)
@@ -133,6 +129,43 @@ void CAru::Check_Collision_is_Possible()
 	}
 }
 
+void CAru::Skill_Update()
+{
+	if (m_FireBall_List.size() > 0)
+	{
+		for (list<CFireBall*>::iterator begin_iter = m_FireBall_List.begin();
+			begin_iter != m_FireBall_List.end(); begin_iter++)
+		{
+			(*begin_iter)->Update();
+		}
+	}
+}
+
+void CAru::Skill_Render()
+{
+	if (m_FireBall_List.size() > 0)
+	{
+		for (list<CFireBall*>::iterator begin_iter = m_FireBall_List.begin();
+			begin_iter != m_FireBall_List.end(); begin_iter++)
+		{
+			(*begin_iter)->Render();
+		}
+	}
+}
+
+void CAru::Skill_Clean()
+{
+	if (m_FireBall_List.size() > 0)
+	{
+		for (list<CFireBall*>::iterator begin_iter = m_FireBall_List.begin();
+			begin_iter != m_FireBall_List.end(); begin_iter++)
+		{
+			delete (*begin_iter);
+		}
+		m_FireBall_List.clear();
+	}
+}
+
 void CAru::Init(LPDIRECT3DDEVICE9 _pDevice)
 {
 	m_fSpeed = 3.0f;
@@ -158,12 +191,13 @@ void CAru::Init(LPDIRECT3DDEVICE9 _pDevice)
 	// 점프 관련
 	m_bJump_is_Possible = false; // 바닥에 붙어있을때만 true
 	m_bCollision_is_Possible = true; // 점프 중일때 false
+	m_b_isRunning = false;
 	m_bJump = false;
 	m_fOld_Pos_y = 0.0f;
 	m_bOld_Check = false;
 
 	// 마지막 움직인 방향 ( 좌우 스프라이트 반전용 )
-	currentDirection = LEFT;
+	currentDirection = 1;
 
 	// 애니매이션 넘버 ( 기본 = 0 )
 	m_iAnimate_Num = 0;
@@ -177,21 +211,33 @@ void CAru::Init(LPDIRECT3DDEVICE9 _pDevice)
 	m_sprite[DOWN].Create_Sprite(_pDevice, L"2D_Sprites\\Aru_down_8peaces.bmp", 512, 64, 8, D3DCOLOR_XRGB(0, 170, 255));
 	m_sprite[LEFT].Create_Sprite(_pDevice, L"2D_Sprites\\Aru_left_8peaces.bmp", 512, 64, 8, D3DCOLOR_XRGB(0, 170, 255));
 	m_sprite[ATTACK].Create_Sprite(_pDevice, L"2D_Sprites\\Aru_attack_6peaces.bmp", 480, 48, 6, D3DCOLOR_XRGB(0, 170, 255));
+
+	// 캐릭터 좌우 움직임 먼지 파티클
+	m_Run_Particle_Sprite.Create_Sprite(_pDevice, L"2D_Sprites\\Run_Particle.png", 80, 16, 5, D3DCOLOR_XRGB(65, 188, 222));
+
+	m_FireBall.Create_Sprite(_pDevice, L"2D_Sprites\\fireball.png", 384, 64, 6, NULL);
+	m_FireBall_Hit.Create_Sprite(_pDevice, L"2D_Sprites\\fireball_hit.png", 576, 64, 9, NULL);
 }
 
-void CAru::Update()
+void CAru::Update(LPDIRECT3DDEVICE9 _pDevice)
 {
 	isCrash_Tile();
 	Check_Collision_is_Possible();
 	
-	Move();
+	KeyInput(_pDevice);
 
 	Jump();
 	Gravity();
 
+	Skill_Update();
+
 	Set_Animation();
 
 	m_sprite[m_iAnimate_Num].Animation_Frame();
+	if (m_b_isRunning && !m_bJump)
+	{
+		m_Run_Particle_Sprite.Animation_Frame();
+	}
 
 	Set_Collider(m_sprite[m_iAnimate_Num].Get_Sprite_Width() - 20.0f, m_sprite[m_iAnimate_Num].Get_Sprite_Height(), true, RECT{0, 20, 0, 0});
 }
@@ -199,6 +245,14 @@ void CAru::Update()
 void CAru::Render()
 {
 	m_sprite[m_iAnimate_Num].DrawBitmap(&m_vPos, 0xFFFFFFFF, Check_Reverse());
+	if (m_b_isRunning && !m_bJump)
+	{
+		if (!Check_Reverse())
+			m_Run_Particle_Sprite.DrawBitmap(&(m_vPos + D3DXVECTOR3(28.0f, 28.0f, 0.0f)), 0xFFFFFFFF, Check_Reverse());
+		else if (Check_Reverse())
+			m_Run_Particle_Sprite.DrawBitmap(&(m_vPos + D3DXVECTOR3(-28.0f, 28.0f, 0.0f)), 0xFFFFFFFF, Check_Reverse());
+	}
+	Skill_Render();
 	Draw_RectLine();
 }
 
@@ -208,35 +262,28 @@ void CAru::Clean()
 	{
 		m_sprite[i].CleanUp();
 	}
+	m_Run_Particle_Sprite.CleanUp();
+	Skill_Clean();
+	m_FireBall.CleanUp();
+	m_FireBall_Hit.CleanUp();
 }
 
-VOID CAru::Move()
+VOID CAru::KeyInput(LPDIRECT3DDEVICE9 _pDevice)
 {
+	// LEFT, RIGHT
 	if (CInput::Get_Instance()->IsKeyPressed(DIK_LEFT) == true)
 	{
-		if (!isHorizontal)
-		{
-			m_vPos.x -= m_fSpeed;
-			m_vDirection.x = -1.0f;
-		}		
+		m_vPos.x -= m_fSpeed;
+		m_vDirection.x = -1.0f;
+		m_b_isRunning = true;
+		currentDirection = -1;
 	}
 	else if (CInput::Get_Instance()->IsKeyPressed(DIK_RIGHT) == true)
 	{
-		if (!isHorizontal)
-		{
-			m_vPos.x += m_fSpeed;
-			m_vDirection.x = 1.0f;
-		}
-	}
-	else if (CInput::Get_Instance()->IsKeyPressed(DIK_UP) == true)
-	{
-		m_vPos.y -= m_fSpeed;
-		m_vDirection.y = -1.0f;
-	}
-	else if (CInput::Get_Instance()->IsKeyPressed(DIK_DOWN) == true)
-	{
-		m_vPos.y += m_fSpeed;
-		m_vDirection.y = 1.0f;
+		m_vPos.x += m_fSpeed;
+		m_vDirection.x = 1.0f;
+		m_b_isRunning = true;
+		currentDirection = 1;
 	}
 
 	// JUMP
@@ -250,6 +297,15 @@ VOID CAru::Move()
 			}
 		}
 	}
+
+	// FireBall
+	if (CInput::Get_Instance()->IsKeyPressed(DIK_Z) == true)
+	{
+		CFireBall* FireBall = new CFireBall();
+		FireBall->Init(_pDevice, m_vPos, currentDirection);
+		FireBall->Set_Sprite(m_FireBall, m_FireBall_Hit);
+		m_FireBall_List.push_back(FireBall);
+	}
 	
 
 	if (CInput::Get_Instance()->IsKeyPressed(DIK_LEFT) == false &&
@@ -258,5 +314,7 @@ VOID CAru::Move()
 		CInput::Get_Instance()->IsKeyPressed(DIK_DOWN) == false)
 	{
 		m_vDirection = { 0.0f, 0.0f };
+		m_b_isRunning = false;
+		m_Run_Particle_Sprite.Reset_Sprite();
 	}
 }

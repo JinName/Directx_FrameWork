@@ -98,16 +98,17 @@ void CSprite::Animation_Frame()
 	}
 }
 
-void CSprite::Set_SpriteCollider()
+void CSprite::Reset_Sprite()
 {
-
+	m_SpriteRect.left = 0;
+	m_SpriteRect.right = m_rectWidth;
 }
 
 void CSprite::CleanUp()
 {
 	if (m_pSprite != NULL)
 	{
-		m_pTexture->Release();
 		m_pSprite->Release();
+		m_pTexture->Release();
 	}
 }

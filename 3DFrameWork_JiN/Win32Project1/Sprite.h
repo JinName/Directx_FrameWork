@@ -55,7 +55,7 @@ public:
 
 	void Animation_Frame();
 
-	void Set_SpriteCollider();
+	void Reset_Sprite();
 
 	void CleanUp();
 };

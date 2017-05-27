@@ -2,9 +2,10 @@
 
 const	int		WND_ORIGINPOS_X = 10;	// the original position of the window, x coordinate
 const	int		WND_ORIGNIPOS_Y = 10;	// the original position of the window, y coordinate
-const	int		WND_WIDTH = 800;
-const	int		WND_HEIGHT = 600;
+const	int		WND_WIDTH = 960;
+const	int		WND_HEIGHT = 720;
 
+/*
 const	int		MAP_WIDTH = 3200;
 const	int		MAP_HEIGHT = 3200;
 //Header attributes
@@ -45,3 +46,4 @@ const	int		MENU_FONT_WIDTH = 15;
 const	int		MENU_FONT_WEIGHT = 15;
 
 const	double	PI = 3.14159265f;
+*/

@@ -58,13 +58,16 @@ void CAru::Jump()
 {
 	if (m_bJump)
 	{
-		if (!m_bOld_Check)
+		if (m_iJump == 1)
 		{
-			m_fOld_Pos_y = m_vPos.y;
-			m_bCollision_is_Possible = false;
-			m_bOld_Check = true;
+			if (!m_bOld_Check)
+			{
+				m_fOld_Pos_y = m_vPos.y;
+				m_bCollision_is_Possible = false;
+				m_bOld_Check = true;
+			}
+			m_vPos.y -= m_fJump_Power;
 		}
-		m_vPos.y -= m_fJump_Power;
 	}
 }
 
@@ -95,6 +98,7 @@ void CAru::isCrash_Tile()
 	{
 		m_vPos.y = m_vPos.y;
 		m_bJump = false;
+		m_iJump = 0;
 		m_bOld_Check = false;
 		m_bJump_is_Possible = true;
 	}
@@ -131,6 +135,8 @@ void CAru::Check_Collision_is_Possible()
 
 void CAru::Skill_Update()
 {
+	FireBall_Cooltime();
+
 	if (m_FireBall_List.size() > 0)
 	{
 		for (list<CFireBall*>::iterator begin_iter = m_FireBall_List.begin();
@@ -166,8 +172,23 @@ void CAru::Skill_Clean()
 	}
 }
 
+void CAru::FireBall_Cooltime()
+{
+	if (m_bFireBall_Ready == false)
+	{
+		if ((float)((clock() - m_fBefore_Clock) / CLOCKS_PER_SEC) >= m_fFireBall_Cooltime)
+		{
+			m_bFireBall_Ready = true;
+		}
+	}
+}
+
+
+////////////// Init, Update, Render, Clean  /////////////////////////////////////////////
+
 void CAru::Init(LPDIRECT3DDEVICE9 _pDevice)
 {
+	m_iJump = 0;
 	m_fSpeed = 3.0f;
 	m_fJump_Power = 5.5f;
 	m_fGravity_Accel = 0.0f;
@@ -204,6 +225,11 @@ void CAru::Init(LPDIRECT3DDEVICE9 _pDevice)
 
 	dwOldtime = GetTickCount();
 	velocity = 0.0f;
+
+	//FireBall Cooltime
+	m_fFireBall_Cooltime = 1.2f;
+	m_fBefore_Clock = 0.0f;
+	m_bFireBall_Ready = true;
 	
 	// 캐릭터 스탠드 스프라이트
 	m_sprite[STAND].Create_Sprite(_pDevice, L"2D_Sprites\\Aru_stand_8peaces.bmp", 512, 64, 8, D3DCOLOR_XRGB(0, 170, 255));
@@ -287,13 +313,14 @@ VOID CAru::KeyInput(LPDIRECT3DDEVICE9 _pDevice)
 	}
 
 	// JUMP
-	if (m_bJump_is_Possible)
+	if (m_iJump < 2)
 	{
 		if (CInput::Get_Instance()->IsKeyPressed(DIK_SPACE) == true)
 		{
 			if (!m_bOld_Check)
 			{
 				m_bJump = true;
+				m_iJump++;
 			}
 		}
 	}
@@ -301,10 +328,16 @@ VOID CAru::KeyInput(LPDIRECT3DDEVICE9 _pDevice)
 	// FireBall
 	if (CInput::Get_Instance()->IsKeyPressed(DIK_Z) == true)
 	{
-		CFireBall* FireBall = new CFireBall();
-		FireBall->Init(_pDevice, m_vPos, currentDirection);
-		FireBall->Set_Sprite(m_FireBall, m_FireBall_Hit);
-		m_FireBall_List.push_back(FireBall);
+		if (m_bFireBall_Ready == true)
+		{
+			CFireBall* FireBall = new CFireBall();
+			FireBall->Init(_pDevice, m_vPos, currentDirection);
+			FireBall->Set_Sprite(m_FireBall, m_FireBall_Hit);
+			m_FireBall_List.push_back(FireBall);
+
+			m_bFireBall_Ready = false;
+			m_fBefore_Clock = clock();
+		}
 	}
 	
 

@@ -18,6 +18,9 @@ private:
 	CSprite m_FireBall_Hit;
 
 	list<CFireBall*> m_FireBall_List;
+	float m_fFireBall_Cooltime;
+	float m_fBefore_Clock;
+	bool m_bFireBall_Ready;
 
 	// 캐릭터 속도
 	float m_fSpeed;
@@ -25,6 +28,7 @@ private:
 	// 캐릭터 방향
 	D3DXVECTOR2 m_vDirection;
 
+	int m_iJump; // 2단 점프용
 	// 행동 변수
 	bool m_bAttacking;
 	bool m_bJump;
@@ -96,6 +100,9 @@ public:
 	void Skill_Update();
 	void Skill_Render();
 	void Skill_Clean();
+
+	// FireBall Cooltime
+	void FireBall_Cooltime();
 
 	// KeyInput
 	VOID KeyInput(LPDIRECT3DDEVICE9 _pDevice);

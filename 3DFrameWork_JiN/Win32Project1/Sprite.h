@@ -33,9 +33,15 @@ private:
 	// 기본값 true
 	bool m_bAnimation_Switch;
 
+	// 마지막 프레임이면 true 리턴
+	bool m_bLast_Frame;
+
 public:
 	CSprite();
 	~CSprite();
+
+	// 마지막 프레임인지 반환
+	bool Get_Last_Frame() { return m_bLast_Frame; }
 
 	// 스프라이트 좌우 크기 반환
 	int Get_Sprite_Width() { return m_rectWidth; }

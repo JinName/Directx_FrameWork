@@ -12,6 +12,7 @@ CSprite::CSprite()
 	,m_rectHeight(0)
 	,m_bAnimation_Switch(true)
 	,m_bCenter_Rect(true)
+	,m_bLast_Frame(false)
 {
 	m_SpriteRect = { 0, 0, 0, 0 };
 }
@@ -85,12 +86,20 @@ void CSprite::Animation_Frame()
 
 		if (dwCurrentTime - m_dwOldTime >= m_dwSpriteTime)
 		{
+			m_bLast_Frame = false; // 마지막 프레임일때 true
+
 			m_dwOldTime = dwCurrentTime;
 			m_SpriteRect.left += m_rectWidth;
 			m_SpriteRect.right += m_rectWidth;
 
+			if (m_SpriteRect.right == m_iWidth)
+			{
+				m_bLast_Frame = true;
+			}
 			if (m_SpriteRect.left >= m_iWidth)
 			{
+				//m_bLast_Frame = true; // 마지막 프레임
+
 				m_SpriteRect.left = 0;
 				m_SpriteRect.right = m_rectWidth;
 			}

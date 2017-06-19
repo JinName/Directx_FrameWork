@@ -18,9 +18,9 @@ private:
 	CSprite m_FireBall_Hit;
 
 	list<CFireBall*> m_FireBall_List;
-	float m_fFireBall_Cooltime;
 	float m_fBefore_Clock;
-	bool m_bFireBall_Ready;
+	bool m_bAttack_Lock;
+	float m_fAttack_Cooltime;
 
 	// 캐릭터 속도
 	float m_fSpeed;
@@ -101,8 +101,8 @@ public:
 	void Skill_Render();
 	void Skill_Clean();
 
-	// FireBall Cooltime
-	void FireBall_Cooltime();
+	// Attack Cooltime
+	void Attack_Cooltime();
 
 	// KeyInput
 	VOID KeyInput(LPDIRECT3DDEVICE9 _pDevice);

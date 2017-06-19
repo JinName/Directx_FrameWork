@@ -13,9 +13,9 @@ void CTile::Init(LPDIRECT3DDEVICE9 _pDevice, TILE_STYLE _STYLE, D3DXVECTOR3 _vPo
 	m_bCollision_is_Possible = false;
 	m_b_isCollision = false;
 	Line_Init(_pDevice);
-	//m_vPos = { 200.0f, 200.0f, 0.0f };
+
 	m_vPos = _vPos;
-	//_STYLE = STYLE_LONG;
+
 	switch(_STYLE)
 	{
 	case STYLE_LONG:

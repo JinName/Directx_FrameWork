@@ -16,8 +16,9 @@ private:
 
 	CBackground m_Background;
 	CAru m_Player;
-	CTile m_Tile;
-	CMonster m_Monster;
+	CMonster m_Monster[4];
+
+	list<CMonster> m_Monster_List;
 
 	// ¸Ê ¸Å´ÏÀú
 	CMapManager m_MapMngr;
@@ -27,6 +28,11 @@ private:
 public:
 	CStage();
 	~CStage();
+
+	void Create_Monster(LPDIRECT3DDEVICE9 _pDevice);
+	void Update_Monster();
+	void Render_Monster();
+	void Clean_Monster();
 
 	virtual void OnInit(LPDIRECT3DDEVICE9 _pDevice);
 	virtual void OnUpdate(LPDIRECT3DDEVICE9 _pDevice);

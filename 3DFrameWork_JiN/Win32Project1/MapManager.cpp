@@ -32,13 +32,13 @@ void CMapManager::Create_Tiles(LPDIRECT3DDEVICE9 _pDevice, int _iStageNum)
 	m_Tile[4].Init(_pDevice, STYLE_LONG, D3DXVECTOR3(560.0f, 370.0f, 0.0f));
 	m_Collider_List.push_back(m_Tile[4].Get_Collider());
 
-	m_Tile[5].Init(_pDevice, STYLE_LONG, D3DXVECTOR3(0.0f, 200.0f, 0.0f));
+	m_Tile[5].Init(_pDevice, STYLE_MID, D3DXVECTOR3(650.0f, 100.0f, 0.0f));
 	m_Collider_List.push_back(m_Tile[5].Get_Collider());
 
-	m_Tile[6].Init(_pDevice, STYLE_LONG, D3DXVECTOR3(0.0f, 200.0f, 0.0f));
+	m_Tile[6].Init(_pDevice, STYLE_SHORT, D3DXVECTOR3(500.0f, 250.0f, 0.0f));
 	m_Collider_List.push_back(m_Tile[6].Get_Collider());
 
-	m_Tile[7].Init(_pDevice, STYLE_LONG, D3DXVECTOR3(0.0f, 200.0f, 0.0f));
+	m_Tile[7].Init(_pDevice, STYLE_LONG, D3DXVECTOR3(0.0f, 160.0f, 0.0f));
 	m_Collider_List.push_back(m_Tile[7].Get_Collider());
 
 	m_TileArray_Len = 8;

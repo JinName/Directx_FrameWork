@@ -32,15 +32,37 @@ void CMonster::Monster_Move()
 	}
 }
 
-void CMonster::Init(LPDIRECT3DDEVICE9 _pDevice)
+void CMonster::Monster_Collision_Check()
 {
+	if (m_b_is_Collision == true)
+	{
+		m_iHP -= 1;
+
+		m_b_is_Collision = false;
+	}
+}
+
+void CMonster::Monster_Destroy()
+{
+	if (m_iHP == 0)
+	{
+		m_bDestroy = true;
+	}
+}
+
+void CMonster::Init(LPDIRECT3DDEVICE9 _pDevice, D3DXVECTOR3 _vPos, float _fMove_Width)
+{
+	m_iHP = 3;
+
+	m_b_is_Collision = false;
+
 	srand((unsigned int)time(NULL));
 
 	m_iDirection = rand() % 2 + 1; // 1~2 난수 1 : 좌 / 2 : 우
-	m_vPos = { 50.0f, 100.0f, 0.0f };
+	m_vPos = _vPos;
 
-	m_fMin_x = 25.5f;
-	m_fMax_x = 174.5f;
+	m_fMin_x = _vPos.x - _fMove_Width / 2.0f;
+	m_fMax_x = _vPos.x + _fMove_Width / 2.0f;
 
 	m_fSpeed = 0.8f;
 
@@ -52,6 +74,12 @@ void CMonster::Init(LPDIRECT3DDEVICE9 _pDevice)
 void CMonster::Update()
 {
 	Monster_Move();
+
+	// 충돌시
+	Monster_Collision_Check();
+
+	// HP 다달면
+	Monster_Destroy();
 
 	m_Sprite.Animation_Frame();
 

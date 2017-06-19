@@ -23,13 +23,15 @@ public:
 	CFireBall();
 	~CFireBall();
 
+	bool Get_isCollision() { return m_b_is_Collision; }
 	void Set_isCollision(bool _isCollision) { m_b_is_Collision = _isCollision; }
 
+	bool Get_isDestroy() { return m_bDestroy; }
 	// 파이어볼 발사 위치 셋팅 (캐릭터 앞)
 	// 기존 entity 클래스의 set_position 함수 이용
 
 	void FireBall_Move();
-	void FireBall_Destroy_Check();
+	bool FireBall_Destroy_Check();
 
 	bool Check_Reverse();
 

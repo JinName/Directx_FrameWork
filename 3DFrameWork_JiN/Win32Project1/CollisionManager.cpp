@@ -16,6 +16,7 @@ void CCollisionManager::Init()
 	m_boxCollider.Init();
 }
 
+/*
 void CCollisionManager::Update(list<RECT> &_Rect_List, CAru &_aru)
 {
 	std::list<RECT>::iterator begin_iter = _Rect_List.begin();
@@ -51,8 +52,9 @@ void CCollisionManager::Update(list<RECT> &_Rect_List, CAru &_aru)
 		}
 	}
 }
+*/
 
-void CCollisionManager::Update(CTile* _Tile_Array, int _Tile_Array_Len, CAru &_aru)
+void CCollisionManager::Charater_Tile_Check(CTile* _Tile_Array, int _Tile_Array_Len, CAru &_aru)
 {
 	int count = 0;
 	for(int i = 0; i < _Tile_Array_Len; i++)
@@ -68,7 +70,7 @@ void CCollisionManager::Update(CTile* _Tile_Array, int _Tile_Array_Len, CAru &_a
 					(&_aru)->Set_isVertical(true);
 					_Tile_Array->Set_isCollision(true);
 				}
-				count++;
+				++count;
 			}
 			else
 			{
@@ -97,6 +99,30 @@ void CCollisionManager::Update(CTile* _Tile_Array, int _Tile_Array_Len, CAru &_a
 				_Tile_Array->Set_Collision_is_Possible(false);
 		}
 
-		_Tile_Array++;
+		++_Tile_Array;
+	}
+}
+
+void CCollisionManager::CharAttack_Monster_Check(list<CFireBall*> &_FireBall_List, list<CMonster> &_Monster_List)
+{
+	std::list<CFireBall*>::iterator fire_begin_iter = _FireBall_List.begin();
+	std::list<CFireBall*>::iterator fire_end_iter = _FireBall_List.end();
+
+	std::list<CMonster>::iterator Monster_begin_iter = _Monster_List.begin();
+	std::list<CMonster>::iterator Monster_end_iter = _Monster_List.end();
+
+	while (Monster_begin_iter != Monster_end_iter)
+	{
+		while (fire_begin_iter != fire_end_iter)
+		{
+			if (m_boxCollider.isIntersect(Monster_begin_iter->Get_Collider(), (*fire_begin_iter)->Get_Collider()))
+			{
+				Monster_begin_iter->Set_isCollision(true);
+				(*fire_begin_iter)->Set_isCollision(true);
+			}
+			++fire_begin_iter;
+		}
+		fire_begin_iter = _FireBall_List.begin();
+		++Monster_begin_iter;
 	}
 }

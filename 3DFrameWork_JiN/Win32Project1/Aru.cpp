@@ -71,6 +71,18 @@ void CAru::Jump()
 			}
 			m_vPos.y -= m_fJump_Power;
 		}
+		else if (m_iJump == 2)
+		{
+			if (!m_bOld_Check)
+			{
+				m_fOld_Pos_y = m_vPos.y;
+				m_bCollision_is_Possible = false;
+				m_fGravity_Accel = 0.0f;
+				velocity = 0.0f;
+				m_bOld_Check = true;
+			}
+			m_vPos.y -= m_fJump_Power;
+		}
 	}
 }
 
@@ -172,6 +184,23 @@ void CAru::Skill_Clean()
 	}
 }
 
+void CAru::Skill_Destory()
+{
+	if (m_FireBall_List.size() > 0)
+	{
+		for (list<CFireBall*>::iterator begin_iter = m_FireBall_List.begin();
+			begin_iter != m_FireBall_List.end(); )
+		{
+			if ((*begin_iter)->FireBall_Destroy_Check() == true)
+			{
+				begin_iter = m_FireBall_List.erase(begin_iter);
+			}
+			else
+				++begin_iter;
+		}
+	}
+}
+
 
 void CAru::Attack_Cooltime()
 {
@@ -191,7 +220,7 @@ void CAru::Init(LPDIRECT3DDEVICE9 _pDevice)
 {
 	m_iJump = 0;
 	m_fSpeed = 3.0f;
-	m_fJump_Power = 5.5f;
+	m_fJump_Power = 6.2f;
 	m_fGravity_Accel = 0.0f;
 	m_vDirection = { 0.0f, 0.0f };
 	// 캐릭 질량
@@ -211,6 +240,7 @@ void CAru::Init(LPDIRECT3DDEVICE9 _pDevice)
 	m_bAttacking = false;
 
 	// 점프 관련
+	m_bJump_Input_Lock = false;
 	m_bJump_is_Possible = false; // 바닥에 붙어있을때만 true
 	m_bCollision_is_Possible = true; // 점프 중일때 false
 	m_b_isRunning = false;
@@ -258,6 +288,7 @@ void CAru::Update(LPDIRECT3DDEVICE9 _pDevice)
 
 	Attack_Cooltime();
 	Skill_Update();
+	Skill_Destory();
 
 	Set_Animation();
 
@@ -273,7 +304,8 @@ void CAru::Update(LPDIRECT3DDEVICE9 _pDevice)
 		m_Run_Particle_Sprite.Animation_Frame();
 	}
 
-	Set_Collider(m_sprite[m_iAnimate_Num].Get_Sprite_Width() - 20.0f, m_sprite[m_iAnimate_Num].Get_Sprite_Height(), true, RECT{0, 20, 0, 0});
+	//Set_Collider(m_sprite[m_iAnimate_Num].Get_Sprite_Width() - 20.0f, m_sprite[m_iAnimate_Num].Get_Sprite_Height(), true, RECT{0, 20, 0, 0});
+	Set_Collider(44.0f, 64.0f, true, RECT{ 0, 20, 0, 0 });
 }
 
 void CAru::Render()
@@ -326,14 +358,31 @@ VOID CAru::KeyInput(LPDIRECT3DDEVICE9 _pDevice)
 	// JUMP
 	if (m_iJump < 2)
 	{
-		if (CInput::Get_Instance()->IsKeyPressed(DIK_SPACE) == true)
+		if (m_bJump_Input_Lock == false)
 		{
-			if (!m_bOld_Check)
+			if (CInput::Get_Instance()->IsKeyPressed(DIK_SPACE) == true)
 			{
-				m_bJump = true;
-				m_iJump++;
+				if (m_iJump == 0)
+				{
+					if (!m_bOld_Check)
+					{
+						m_bJump = true;
+						++m_iJump;
+					}
+				}
+				else if (m_iJump == 1)
+				{
+					m_bOld_Check = false;
+					++m_iJump;
+				}
+				m_bJump_Input_Lock = true;
 			}
 		}
+	}
+
+	if (CInput::Get_Instance()->IsKeyPressed(DIK_SPACE) == false)
+	{
+		m_bJump_Input_Lock = false;
 	}
 
 	// FireBall

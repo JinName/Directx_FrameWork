@@ -29,6 +29,7 @@ private:
 	D3DXVECTOR2 m_vDirection;
 
 	int m_iJump; // 2단 점프용
+	bool m_bJump_Input_Lock;
 	// 행동 변수
 	bool m_bAttacking;
 	bool m_bJump;
@@ -71,6 +72,8 @@ public:
 	CAru();
 	~CAru();
 
+	list<CFireBall*> Get_FireBall_List() { return m_FireBall_List; }
+
 	// 충돌 가능상태인지
 	bool Get_Collision_is_Possible() { return m_bCollision_is_Possible; }
 	// 충돌 시 변수 셋팅
@@ -100,6 +103,9 @@ public:
 	void Skill_Update();
 	void Skill_Render();
 	void Skill_Clean();
+
+	// FireBall Destory
+	void Skill_Destory();
 
 	// Attack Cooltime
 	void Attack_Cooltime();

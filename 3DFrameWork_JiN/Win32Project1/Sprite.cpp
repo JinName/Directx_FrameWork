@@ -94,17 +94,24 @@ void CSprite::Animation_Frame()
 
 			if (m_SpriteRect.right == m_iWidth)
 			{
-				m_bLast_Frame = true;
+				m_bLast_Frame = true; // 마지막 프레임
 			}
 			if (m_SpriteRect.left >= m_iWidth)
 			{
-				//m_bLast_Frame = true; // 마지막 프레임
-
 				m_SpriteRect.left = 0;
 				m_SpriteRect.right = m_rectWidth;
 			}
 		}
 	}
+}
+
+void CSprite::Select_Sprite(int _Sprite_Num)
+{
+	m_SpriteRect.left = _Sprite_Num * m_rectWidth;
+	m_SpriteRect.right = m_SpriteRect.left + m_rectWidth;
+
+	m_SpriteRect.top = 0;
+	m_SpriteRect.bottom = m_SpriteRect.top + m_rectHeight;
 }
 
 void CSprite::Reset_Sprite()

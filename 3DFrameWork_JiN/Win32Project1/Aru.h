@@ -68,13 +68,26 @@ private:
 	bool isHorizontal; // 수평 충돌
 	bool isHit; // 피격
 
+	int m_iHP; // 체력		
+	bool m_bAfter_Collision_Setting; // 충돌 시 플레이어 상태 셋팅
+	bool m_bActive_Collision; // 피격 후 무적상태
+	float m_fCollision_Power; // 충돌시 밀려나는 힘
+
 public:
 	CAru();
 	~CAru();
 
+	// 피격시 on/off : 몬스터와 충돌 가능 상태인지 반환
+	bool Get_Active_Collision() { return m_bActive_Collision; }
+	void Set_Active_Collision(bool _bActive_Collision) { m_bActive_Collision = _bActive_Collision; }
+
+	// hp 반환
+	int Get_HP() { return m_iHP; }
+
+	// 파이어볼 리스트 반환 - 충돌처리
 	list<CFireBall*> Get_FireBall_List() { return m_FireBall_List; }
 
-	// 충돌 가능상태인지
+	// 점프시 on/off 타일과 충돌 가능 상태인지 반환
 	bool Get_Collision_is_Possible() { return m_bCollision_is_Possible; }
 	// 충돌 시 변수 셋팅
 	void Set_isVertical(bool _isVertical) { isVertical = _isVertical; }

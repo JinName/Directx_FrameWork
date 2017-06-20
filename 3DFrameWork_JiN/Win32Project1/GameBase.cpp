@@ -1,6 +1,10 @@
 #include "GameBase.h"
 
-//CGameBase* CGameBase::instance = nullptr;
+CGameBase::CGameBase()
+	:m_bChange_Scene(false)
+{
+
+}
 
 void CGameBase::OnInit(LPDIRECT3DDEVICE9 _pDevice)
 {

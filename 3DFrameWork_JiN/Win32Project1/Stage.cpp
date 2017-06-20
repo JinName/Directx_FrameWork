@@ -1,14 +1,19 @@
 #include "Stage.h"
 
-
-
 CStage::CStage()
 {
 }
 
-
 CStage::~CStage()
 {
+}
+
+bool CStage::GameOver()
+{
+	if (m_Player.Get_HP() == 0)
+		return true;
+
+	return false;
 }
 
 void CStage::Create_Monster(LPDIRECT3DDEVICE9 _pDevice)
@@ -74,17 +79,21 @@ void CStage::Clean_Monster()
 void CStage::OnInit(LPDIRECT3DDEVICE9 _pDevice)
 {
 	// stage number
-	m_iStageNum = 1;
+	m_iStageNum = 1;	
+	m_iGameScene_Num = STAGE;
 
 	// map initialize
 	m_MapMngr.StageMap_Init(_pDevice, m_iStageNum);
 	m_CollisionMngr.Init();
 
 	// monster initialize
-	Create_Monster(_pDevice);
+	Create_Monster(_pDevice);	
 
 	// player initialize
 	m_Player.Init(_pDevice);
+
+	// ui initialize
+	m_UIMnger.Init(_pDevice, m_Player.Get_HP());
 }
 
 void CStage::OnUpdate(LPDIRECT3DDEVICE9 _pDevice)
@@ -95,11 +104,19 @@ void CStage::OnUpdate(LPDIRECT3DDEVICE9 _pDevice)
 	Update_Monster();
 
 	// FireBall 생성을 위해 디바이스 필요
-	m_Player.Update(_pDevice);	
+	m_Player.Update(_pDevice);
 
-	// 매 프래임 마다 타일과 캐릭터 상태를 확인
+	// UI 업데이트
+	m_UIMnger.Update(m_Player.Get_HP());
+
+	// 매 프래임 마다 충돌체크할 것들
 	m_CollisionMngr.Charater_Tile_Check(m_MapMngr.Get_TileArray(), 8, m_Player);
 	m_CollisionMngr.CharAttack_Monster_Check(m_Player.Get_FireBall_List(), m_Monster_List);
+	m_CollisionMngr.Charater_Monster_Check(m_Player, m_Monster_List);
+
+	// GameOver
+	if (GameOver())
+		m_bChange_Scene = true;
 }
 
 void CStage::OnRender(LPDIRECT3DDEVICE9 _pDevice)
@@ -110,10 +127,13 @@ void CStage::OnRender(LPDIRECT3DDEVICE9 _pDevice)
 	Render_Monster();
 
 	m_Player.Render();
+
+	m_UIMnger.Render();
 }
 
 void CStage::OnCleanup(LPDIRECT3DDEVICE9 _pDevice)
 {
+	m_UIMnger.Clean();
 	m_MapMngr.StageMap_Cleanup();
 
 	// 몬스터
@@ -121,4 +141,3 @@ void CStage::OnCleanup(LPDIRECT3DDEVICE9 _pDevice)
 
 	m_Player.Clean();
 }
-

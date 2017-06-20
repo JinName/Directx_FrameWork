@@ -126,3 +126,22 @@ void CCollisionManager::CharAttack_Monster_Check(list<CFireBall*> &_FireBall_Lis
 		++Monster_begin_iter;
 	}
 }
+
+void CCollisionManager::Charater_Monster_Check(CAru &_aru, list<CMonster> &_Monster_List)
+{
+	std::list<CMonster>::iterator Monster_begin_iter = _Monster_List.begin();
+	std::list<CMonster>::iterator Monster_end_iter = _Monster_List.end();
+
+	if ((&_aru)->Get_Active_Collision())
+	{
+		while (Monster_begin_iter != Monster_end_iter)
+		{
+			if (m_boxCollider.isIntersect(Monster_begin_iter->Get_Collider(), (&_aru)->Get_Collider()))
+			{
+				// 플레이어 충돌
+				(&_aru)->Set_Active_Collision(false);
+			}
+			++Monster_begin_iter;
+		}
+	}
+}

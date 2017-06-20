@@ -65,7 +65,7 @@ void CAru::Jump()
 		{
 			if (!m_bOld_Check)
 			{
-				m_fOld_Pos_y = m_vPos.y;
+				//m_fOld_Pos_y = m_vPos.y;
 				m_bCollision_is_Possible = false;
 				m_bOld_Check = true;
 			}
@@ -75,7 +75,7 @@ void CAru::Jump()
 		{
 			if (!m_bOld_Check)
 			{
-				m_fOld_Pos_y = m_vPos.y;
+				//m_fOld_Pos_y = m_vPos.y;
 				m_bCollision_is_Possible = false;
 				m_fGravity_Accel = 0.0f;
 				velocity = 0.0f;
@@ -133,7 +133,26 @@ void CAru::isCrash_Tile()
 
 void CAru::isCrash_Enemy()
 {
-
+	if (m_bActive_Collision == false)
+	{
+		if (m_bAfter_Collision_Setting == false) // 체력감소
+		{
+			m_iHP -= 1;
+			m_bJump = false;// 점프 중단
+			m_bCollision_is_Possible = true; // 타일과는 충돌 가능
+			m_bAfter_Collision_Setting = true;
+		}
+		// 밀려남
+		m_vPos.x = m_vPos.x + -currentDirection * m_fCollision_Power;
+		m_fCollision_Power -= 1.0f;
+		// 어느정도 밀려나면 몬스터와 충돌 가능 상태로 전환
+		if (m_fCollision_Power < 0)
+		{
+			m_bAfter_Collision_Setting = false;
+			m_fCollision_Power = 10.0f;
+			m_bActive_Collision = true;
+		}
+	}
 }
 
 void CAru::Check_Collision_is_Possible()
@@ -218,6 +237,7 @@ void CAru::Attack_Cooltime()
 
 void CAru::Init(LPDIRECT3DDEVICE9 _pDevice)
 {
+	m_iHP = 3;
 	m_iJump = 0;
 	m_fSpeed = 3.0f;
 	m_fJump_Power = 6.2f;
@@ -225,6 +245,7 @@ void CAru::Init(LPDIRECT3DDEVICE9 _pDevice)
 	m_vDirection = { 0.0f, 0.0f };
 	// 캐릭 질량
 	m_fCharacter_mass = 4.0f;
+	m_fCollision_Power = 10.0f; // 충돌시 밀려나는 힘
 
 	isVertical = false; // 수직 충돌
 	isHorizontal = false; // 수평 충돌
@@ -234,7 +255,11 @@ void CAru::Init(LPDIRECT3DDEVICE9 _pDevice)
 	Line_Init(_pDevice);
 
 	// 캐릭터 기본 시작 위치
-	m_vPos = { 100.0f, 100.0f, 0.0f };
+	m_vPos = { 100.0f, 300.0f, 0.0f };
+
+	// 몬스터와 충돌시 false : 입력도 받지않고 충돌도 하지않는 무적상태 3초
+	m_bActive_Collision = true;
+	m_bAfter_Collision_Setting = false; // 몬스터와 충돌시 셋팅
 
 	// 공격 중인지
 	m_bAttacking = false;
@@ -279,11 +304,16 @@ void CAru::Init(LPDIRECT3DDEVICE9 _pDevice)
 void CAru::Update(LPDIRECT3DDEVICE9 _pDevice)
 {
 	isCrash_Tile();
-	Check_Collision_is_Possible();
-	
-	KeyInput(_pDevice);
+	isCrash_Enemy();
 
-	Jump();
+	Check_Collision_is_Possible(); // 점프 시에 타일과 충돌 가능상태인지 확인
+	
+	if (m_bActive_Collision == true)
+	{
+		KeyInput(_pDevice);
+
+		Jump();
+	}
 	Gravity();
 
 	Attack_Cooltime();
@@ -331,6 +361,7 @@ void CAru::Clean()
 	{
 		m_sprite[i].CleanUp();
 	}
+
 	m_Run_Particle_Sprite.CleanUp();
 	Skill_Clean();
 	m_FireBall.CleanUp();
@@ -379,7 +410,7 @@ VOID CAru::KeyInput(LPDIRECT3DDEVICE9 _pDevice)
 			}
 		}
 	}
-
+	
 	if (CInput::Get_Instance()->IsKeyPressed(DIK_SPACE) == false)
 	{
 		m_bJump_Input_Lock = false;

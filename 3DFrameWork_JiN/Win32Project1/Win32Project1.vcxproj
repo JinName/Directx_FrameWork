@@ -88,6 +88,8 @@
     <ClCompile Include="Aru.cpp" />
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="2DBoxCollider.cpp" />
+    <ClCompile Include="BasicButton.cpp" />
+    <ClCompile Include="ButtonManager.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
@@ -96,6 +98,8 @@
     <ClCompile Include="GameBase.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="DirectInput.cpp" />
+    <ClCompile Include="GameOver.cpp" />
+    <ClCompile Include="Health.cpp" />
     <ClCompile Include="Light.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="Meshes.cpp" />
@@ -106,6 +110,8 @@
     <ClCompile Include="Tiger.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="MapManager.cpp" />
+    <ClCompile Include="Title.cpp" />
+    <ClCompile Include="UIManager.cpp" />
     <ClCompile Include="Vertex.cpp" />
     <ClCompile Include="WinSetup.cpp" />
     <ClCompile Include="D3DSetup.cpp" />
@@ -115,6 +121,8 @@
     <ClInclude Include="Aru.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="2DBoxCollider.h" />
+    <ClInclude Include="BasicButton.h" />
+    <ClInclude Include="ButtonManager.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="CollisionManager.h" />
@@ -123,6 +131,8 @@
     <ClInclude Include="GameBase.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="DirectInput.h" />
+    <ClInclude Include="GameOver.h" />
+    <ClInclude Include="Health.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="Meshes.h" />
@@ -134,6 +144,8 @@
     <ClInclude Include="Tiger.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="MapManager.h" />
+    <ClInclude Include="Title.h" />
+    <ClInclude Include="UIManager.h" />
     <ClInclude Include="Vertex.h" />
     <ClInclude Include="WinConfigure.h" />
     <ClInclude Include="WinSetup.h" />

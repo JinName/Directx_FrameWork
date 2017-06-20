@@ -61,6 +61,27 @@
     <Filter Include="GameBase\Entity\Character\2D_Aru\FireBall">
       <UniqueIdentifier>{e747d230-eaba-4489-b704-45c1f7598454}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameBase\Entity\Character\Health">
+      <UniqueIdentifier>{56b21a0b-0c1f-429d-9203-bf34c9ad3d03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameManager\UI_Manager">
+      <UniqueIdentifier>{9467c7d4-e4b4-48e4-af75-c174074c925a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameBase\Scene\Stage">
+      <UniqueIdentifier>{b2fb0e1b-ef64-4790-9447-a9c619c0f4cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameBase\Scene\Title">
+      <UniqueIdentifier>{656ae734-0f51-40d5-8da7-7d8ed74fb42b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameManager\ButtonManager">
+      <UniqueIdentifier>{d3707066-64e3-4b75-8252-caa9fded948f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameManager\ButtonManager\Button">
+      <UniqueIdentifier>{038430e5-d530-4c94-8277-91f0a97feb24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameBase\Scene\GameOver">
+      <UniqueIdentifier>{aa0c60d7-526f-4692-92b2-d59ffb530831}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -111,9 +132,6 @@
     <ClCompile Include="Aru.cpp">
       <Filter>GameBase\Entity\Character\2D_Aru</Filter>
     </ClCompile>
-    <ClCompile Include="Stage.cpp">
-      <Filter>GameBase\Scene</Filter>
-    </ClCompile>
     <ClCompile Include="Tile.cpp">
       <Filter>GameBase\Entity\Map\Tiles</Filter>
     </ClCompile>
@@ -137,6 +155,27 @@
     </ClCompile>
     <ClCompile Include="FireBall.cpp">
       <Filter>GameBase\Entity\Character\2D_Aru\FireBall</Filter>
+    </ClCompile>
+    <ClCompile Include="Health.cpp">
+      <Filter>GameBase\Entity\Character\Health</Filter>
+    </ClCompile>
+    <ClCompile Include="UIManager.cpp">
+      <Filter>GameManager\UI_Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage.cpp">
+      <Filter>GameBase\Scene\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="Title.cpp">
+      <Filter>GameBase\Scene\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonManager.cpp">
+      <Filter>GameManager\ButtonManager</Filter>
+    </ClCompile>
+    <ClCompile Include="BasicButton.cpp">
+      <Filter>GameManager\ButtonManager\Button</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOver.cpp">
+      <Filter>GameBase\Scene\GameOver</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -194,9 +233,6 @@
     <ClInclude Include="Aru.h">
       <Filter>GameBase\Entity\Character\2D_Aru</Filter>
     </ClInclude>
-    <ClInclude Include="Stage.h">
-      <Filter>GameBase\Scene</Filter>
-    </ClInclude>
     <ClInclude Include="Tile.h">
       <Filter>GameBase\Entity\Map\Tiles</Filter>
     </ClInclude>
@@ -220,6 +256,27 @@
     </ClInclude>
     <ClInclude Include="FireBall.h">
       <Filter>GameBase\Entity\Character\2D_Aru\FireBall</Filter>
+    </ClInclude>
+    <ClInclude Include="Health.h">
+      <Filter>GameBase\Entity\Character\Health</Filter>
+    </ClInclude>
+    <ClInclude Include="UIManager.h">
+      <Filter>GameManager\UI_Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage.h">
+      <Filter>GameBase\Scene\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="Title.h">
+      <Filter>GameBase\Scene\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonManager.h">
+      <Filter>GameManager\ButtonManager</Filter>
+    </ClInclude>
+    <ClInclude Include="BasicButton.h">
+      <Filter>GameManager\ButtonManager\Button</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOver.h">
+      <Filter>GameBase\Scene\GameOver</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

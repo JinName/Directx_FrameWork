@@ -4,6 +4,7 @@
 #include "Background.h"
 #include "Aru.h"
 #include "Tile.h"
+#include "UIManager.h"
 #include "MapManager.h"
 #include "CollisionManager.h"
 #include "Monster.h"
@@ -20,14 +21,18 @@ private:
 
 	list<CMonster> m_Monster_List;
 
+	// UI 매니저
+	CUIManager m_UIMnger;
 	// 맵 매니저
 	CMapManager m_MapMngr;
 	// 충돌 처리 매니저
 	CCollisionManager m_CollisionMngr;
-
 public:
 	CStage();
 	~CStage();
+
+	// GameOver Check
+	bool GameOver();
 
 	void Create_Monster(LPDIRECT3DDEVICE9 _pDevice);
 	void Update_Monster();
@@ -39,4 +44,3 @@ public:
 	virtual void OnRender(LPDIRECT3DDEVICE9 _pDevice);
 	virtual void OnCleanup(LPDIRECT3DDEVICE9 _pDevice);
 };
-

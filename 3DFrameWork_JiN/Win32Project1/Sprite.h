@@ -50,6 +50,7 @@ public:
 	// 중앙값 계산 스위치
 	bool Get_Center_Rect() { return m_bCenter_Rect; }
 	void Set_Center_Rect(bool _bCenter_Rect) { m_bCenter_Rect = _bCenter_Rect; }
+
 	// 스프라이트 스위치
 	bool Get_Animation_Switch() { return m_bAnimation_Switch; }
 	void Set_Animation_Switch(bool _bAnimation_Switch) { m_bAnimation_Switch = _bAnimation_Switch; }
@@ -59,7 +60,10 @@ public:
 
 	void DrawBitmap(D3DXVECTOR3* pos, D3DCOLOR mask, bool reverse);
 
+	// 애니매이션
 	void Animation_Frame();
+	// 원하는 스프라이트 선택 : 보통 스프라이트 스위치 off 상태에서 쓸 것
+	void Select_Sprite(int _Sprite_Num);
 
 	void Reset_Sprite();
 

@@ -5,6 +5,7 @@
 #include "Tile.h"
 #include "Aru.h"
 #include "Monster.h"
+#include "Potion.h"
 
 class CCollisionManager
 {
@@ -27,5 +28,8 @@ public:
 
 	// 캐릭터 - 몬스터 충돌 : 캐릭터 데미지 입음
 	void Charater_Monster_Check(CAru &_aru, list<CMonster> &_Monster_List);
+
+	// 캐릭터 - 포션 충돌 : 캐릭터 체력 회복
+	void Charater_Potion_Check(CAru &_aru, list<CPotion> &_Potion_List);
 };
 

@@ -155,6 +155,24 @@ void CAru::isCrash_Enemy()
 	}
 }
 
+void CAru::isCrash_Potion()
+{
+	if (m_bPotion_Collision == true)
+	{
+		m_iHP += 1;
+
+		m_bPotion_Collision = false;
+	}
+}
+
+bool CAru::Get_HP_isFull()
+{
+	if (m_iHP == 3)
+		return true;
+	else
+		return false;
+}
+
 void CAru::Check_Collision_is_Possible()
 {
 	if (m_bJump)
@@ -238,6 +256,7 @@ void CAru::Attack_Cooltime()
 void CAru::Init(LPDIRECT3DDEVICE9 _pDevice)
 {
 	m_iHP = 3;
+	m_bHP_isFull = true;
 	m_iJump = 0;
 	m_fSpeed = 3.0f;
 	m_fJump_Power = 6.2f;
@@ -245,7 +264,7 @@ void CAru::Init(LPDIRECT3DDEVICE9 _pDevice)
 	m_vDirection = { 0.0f, 0.0f };
 	// 캐릭 질량
 	m_fCharacter_mass = 4.0f;
-	m_fCollision_Power = 10.0f; // 충돌시 밀려나는 힘
+	m_fCollision_Power = 15.0f; // 충돌시 밀려나는 힘
 
 	isVertical = false; // 수직 충돌
 	isHorizontal = false; // 수평 충돌
@@ -305,6 +324,7 @@ void CAru::Update(LPDIRECT3DDEVICE9 _pDevice)
 {
 	isCrash_Tile();
 	isCrash_Enemy();
+	isCrash_Potion();
 
 	Check_Collision_is_Possible(); // 점프 시에 타일과 충돌 가능상태인지 확인
 	

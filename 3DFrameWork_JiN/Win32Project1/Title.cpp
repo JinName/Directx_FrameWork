@@ -13,7 +13,7 @@ CTitle::~CTitle()
 void CTitle::OnInit(LPDIRECT3DDEVICE9 _pDevice)
 {
 	m_iGameScene_Num = TITLE;
-	Button_GameStart.Init(_pDevice, L"2D_Sprites\\GameStart.png", 490.0f, 320.0f, 300.0f, 70.0f);
+	Button_GameStart.Init(_pDevice, L"2D_Sprites\\GameStart.png", 340.0f, 280.0f, 300.0f, 70.0f);
 }
 
 void CTitle::OnUpdate(LPDIRECT3DDEVICE9 _pDevice)
@@ -24,7 +24,7 @@ void CTitle::OnUpdate(LPDIRECT3DDEVICE9 _pDevice)
 		CInput::Get_Instance()->GetMouseRelativePosition(x, y, z);
 		if (Button_GameStart.On_Click(x, y))
 		{
-			m_bChange_Scene = true;
+			m_bGameOver = true;
 		}
 	}
 }

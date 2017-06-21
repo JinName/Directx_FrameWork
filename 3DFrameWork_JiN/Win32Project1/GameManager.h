@@ -5,6 +5,7 @@
 #include "Stage.h"
 #include "Title.h"
 #include "GameOver.h"
+#include "GameClear.h"
 
 class CGameManager
 {

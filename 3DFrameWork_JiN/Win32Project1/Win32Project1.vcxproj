@@ -96,6 +96,7 @@
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="FireBall.cpp" />
     <ClCompile Include="GameBase.cpp" />
+    <ClCompile Include="GameClear.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="DirectInput.cpp" />
     <ClCompile Include="GameOver.cpp" />
@@ -104,6 +105,7 @@
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="Meshes.cpp" />
     <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="Potion.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="Texture.cpp" />
@@ -129,6 +131,7 @@
     <ClInclude Include="Entity.h" />
     <ClInclude Include="FireBall.h" />
     <ClInclude Include="GameBase.h" />
+    <ClInclude Include="GameClear.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="DirectInput.h" />
     <ClInclude Include="GameOver.h" />
@@ -137,6 +140,7 @@
     <ClInclude Include="Material.h" />
     <ClInclude Include="Meshes.h" />
     <ClInclude Include="Monster.h" />
+    <ClInclude Include="Potion.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Stage.h" />

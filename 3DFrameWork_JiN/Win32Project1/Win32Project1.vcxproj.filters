@@ -82,6 +82,12 @@
     <Filter Include="GameBase\Scene\GameOver">
       <UniqueIdentifier>{aa0c60d7-526f-4692-92b2-d59ffb530831}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameBase\Entity\Potion">
+      <UniqueIdentifier>{c56d75f2-3f88-42db-9f88-83dce7e6e023}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameBase\Scene\GameClear">
+      <UniqueIdentifier>{8ca54286-f375-4365-bfa7-b1eb224f7935}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -176,6 +182,12 @@
     </ClCompile>
     <ClCompile Include="GameOver.cpp">
       <Filter>GameBase\Scene\GameOver</Filter>
+    </ClCompile>
+    <ClCompile Include="Potion.cpp">
+      <Filter>GameBase\Entity\Potion</Filter>
+    </ClCompile>
+    <ClCompile Include="GameClear.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -277,6 +289,12 @@
     </ClInclude>
     <ClInclude Include="GameOver.h">
       <Filter>GameBase\Scene\GameOver</Filter>
+    </ClInclude>
+    <ClInclude Include="Potion.h">
+      <Filter>GameBase\Entity\Potion</Filter>
+    </ClInclude>
+    <ClInclude Include="GameClear.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

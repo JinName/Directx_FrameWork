@@ -33,6 +33,7 @@ void CBasicButton::Init(LPDIRECT3DDEVICE9 _pDevice, std::wstring _filename, floa
 	m_fButtonHeight = _fButtonHeight;
 
 	m_Sprite.Create_Sprite(_pDevice, _filename.c_str(), m_fButtonWidth, m_fButtonHeight, 1, NULL);
+	m_Sprite.Set_Center_Rect(false);
 }
 void CBasicButton::Update()
 {

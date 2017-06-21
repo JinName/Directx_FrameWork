@@ -1,5 +1,13 @@
-﻿  Aru.cpp
+﻿  GameManager.cpp
   c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-c:\users\seungwon\desktop\workspace\d3d_framework\3dframework_jin\win32project1\aru.cpp(429): warning C4244: '=': 'clock_t'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  GameBase.cpp
+  코드를 생성하고 있습니다...
+  건너뛰고 있습니다... (관련된 변경 내용 없음)
+  main.cpp
+  WinSetup.cpp
+  Title.cpp
+  Stage.cpp
+  GameOver.cpp
+  GameClear.cpp
   Win32Project1.vcxproj -> C:\Users\seungwon\Desktop\WorkSpace\d3d_framework\3DFrameWork_JiN\Debug\Win32Project1.exe
   Win32Project1.vcxproj -> C:\Users\seungwon\Desktop\WorkSpace\d3d_framework\3DFrameWork_JiN\Debug\Win32Project1.pdb (Full PDB)

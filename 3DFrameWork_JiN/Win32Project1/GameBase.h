@@ -5,14 +5,15 @@
 //#include "Vertex.h"
 //#include "Aru.h"
 
-enum { TITLE, STAGE, GAMEOVER };
+enum { TITLE, STAGE, GAMEOVER, GAMECLEAR };
 
 class CGameBase : public CD3DSetup
 {
 protected:
 	Position m_pos;
 
-	bool m_bChange_Scene;
+	bool m_bGameOver;
+	bool m_bGameClear;
 
 	int m_iGameScene_Num;
 
@@ -25,7 +26,8 @@ public:
 	~CGameBase() {};
 	
 	int Get_GameScene_Num() { return m_iGameScene_Num; }
-	bool Get_Change_Scene() { return m_bChange_Scene; }
+	bool Get_Change_Scene() { return m_bGameOver; }
+	bool Get_Change_Clear() { return m_bGameClear; }
 	
 	// 부모의 함수
 	virtual void OnInit(LPDIRECT3DDEVICE9 _pDevice);

@@ -18,6 +18,7 @@ void CGameOver::OnInit(LPDIRECT3DDEVICE9 _pDevice)
 
 void CGameOver::OnUpdate(LPDIRECT3DDEVICE9 _pDevice)
 {
+	
 }
 
 void CGameOver::OnRender(LPDIRECT3DDEVICE9 _pDevice)

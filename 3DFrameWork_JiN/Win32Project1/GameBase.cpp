@@ -1,7 +1,8 @@
 #include "GameBase.h"
 
 CGameBase::CGameBase()
-	:m_bChange_Scene(false)
+	:m_bGameOver(false),
+	m_bGameClear(false)
 {
 
 }

@@ -73,9 +73,18 @@ private:
 	bool m_bActive_Collision; // 피격 후 무적상태
 	float m_fCollision_Power; // 충돌시 밀려나는 힘
 
+	// 포션과 충돌시
+	bool m_bHP_isFull; // HP FULL 이면 true : 포션 못먹음
+	bool m_bPotion_Collision; // 포션과 충돌시 true
+
 public:
 	CAru();
 	~CAru();
+
+	// HP 풀일때 true
+	bool Get_HP_isFull();
+	// 포션 충돌시 true
+	void Set_Potion_Collision(bool _bPotion_Collision) { m_bPotion_Collision = _bPotion_Collision; }
 
 	// 피격시 on/off : 몬스터와 충돌 가능 상태인지 반환
 	bool Get_Active_Collision() { return m_bActive_Collision; }
@@ -108,6 +117,8 @@ public:
 	void isCrash_Tile();
 	// 적과 부딪혔을때
 	void isCrash_Enemy();
+	// 포션과 충돌 시
+	void isCrash_Potion();
 
 	// 충돌 가능한 상태인지
 	void Check_Collision_is_Possible();

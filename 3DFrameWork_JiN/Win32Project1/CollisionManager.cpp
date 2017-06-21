@@ -145,3 +145,23 @@ void CCollisionManager::Charater_Monster_Check(CAru &_aru, list<CMonster> &_Mons
 		}
 	}
 }
+
+void CCollisionManager::Charater_Potion_Check(CAru &_aru, list<CPotion> &_Potion_List)
+{
+	std::list<CPotion>::iterator Potion_begin_iter = _Potion_List.begin();
+	std::list<CPotion>::iterator Potion_end_iter = _Potion_List.end();
+
+	if ((&_aru)->Get_HP_isFull() == false)
+	{
+		while (Potion_begin_iter != Potion_end_iter)
+		{
+			if (m_boxCollider.isIntersect(Potion_begin_iter->Get_Collider(), (&_aru)->Get_Collider()))
+			{
+				// 플레이어 체력 회복 / 포션 소멸
+				(&_aru)->Set_Potion_Collision(true);
+				Potion_begin_iter->Set_isCollision(true);
+			}
+			++Potion_begin_iter;
+		}
+	}
+}

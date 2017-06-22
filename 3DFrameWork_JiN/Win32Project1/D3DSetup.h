@@ -45,6 +45,9 @@ public:
 	// D3D 초기화
 	HRESULT InitD3D(HWND hWnd);
 
+	// D3D 종료
+	VOID Shutdown();
+
 	// Update, Render, Cleanup
 	void Update();
 	void Render();

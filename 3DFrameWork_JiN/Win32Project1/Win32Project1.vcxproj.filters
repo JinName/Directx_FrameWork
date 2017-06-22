@@ -187,7 +187,7 @@
       <Filter>GameBase\Entity\Potion</Filter>
     </ClCompile>
     <ClCompile Include="GameClear.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>GameBase\Scene\GameClear</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -294,7 +294,7 @@
       <Filter>GameBase\Entity\Potion</Filter>
     </ClInclude>
     <ClInclude Include="GameClear.h">
-      <Filter>Header Files</Filter>
+      <Filter>GameBase\Scene\GameClear</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

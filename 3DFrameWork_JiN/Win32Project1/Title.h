@@ -9,6 +9,7 @@ class CTitle : public CGameBase
 {
 private:
 	CBasicButton Button_GameStart;
+	CBasicButton Button_Exit;
 public:
 	CTitle();
 	~CTitle();

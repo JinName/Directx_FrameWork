@@ -24,10 +24,9 @@ LRESULT WINAPI CWinSetup::MsgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lPa
 	switch (msg)
 	{
 	case WM_DESTROY:
-		//m_keyboard->FreeDirectInput();
-		//delete m_keyboard;
 		m_game->Cleanup();
 		delete m_game;
+		m_game = NULL;
 		PostQuitMessage(0);
 		return 0;
 
@@ -113,7 +112,8 @@ void CWinSetup::MsgLoop()
 		else
 		{
 			m_game->Update();
-			m_game->Render();
+			if (m_game != NULL)
+				m_game->Render();
 		}
 	}
 

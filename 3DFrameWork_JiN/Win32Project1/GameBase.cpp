@@ -1,8 +1,11 @@
 #include "GameBase.h"
 
 CGameBase::CGameBase()
-	:m_bGameOver(false),
-	m_bGameClear(false)
+	:m_bGameStart(false)
+	,m_bGameOver(false)
+	,m_bGameClear(false)
+	,m_bRestart(false)
+	,m_bExit(false)
 {
 
 }

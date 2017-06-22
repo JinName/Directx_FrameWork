@@ -28,7 +28,7 @@ void CGameManager::Initialize()
 void CGameManager::Update()
 {
 	m_pGameBase->Update();
-	if (m_pGameBase->Get_GameScene_Num() == TITLE && m_pGameBase->Get_Change_Scene())
+	if (m_pGameBase->Get_GameScene_Num() == TITLE && m_pGameBase->Get_Change_GameStart())
 	{
 		m_pGameBase->Cleanup();
 		delete m_pGameBase;
@@ -36,7 +36,11 @@ void CGameManager::Update()
 		m_pGameBase = new CStage;
 		m_pGameBase->InitD3D(m_hWnd);
 	}
-	else if (m_pGameBase->Get_GameScene_Num() == STAGE && m_pGameBase->Get_Change_Scene())
+	else if (m_pGameBase->Get_GameScene_Num() == TITLE && m_pGameBase->Get_Exit())
+	{
+		DestroyWindow(m_hWnd);
+	}
+	else if (m_pGameBase->Get_GameScene_Num() == STAGE && m_pGameBase->Get_Change_GameOver())
 	{
 		m_pGameBase->Cleanup();
 		delete m_pGameBase;
@@ -52,9 +56,13 @@ void CGameManager::Update()
 		m_pGameBase = new CGameClear;
 		m_pGameBase->InitD3D(m_hWnd);
 	}
-	else if (m_pGameBase->Get_GameScene_Num() == GAMECLEAR || m_pGameBase->Get_GameScene_Num() == GAMEOVER)
+	else if (m_pGameBase->Get_GameScene_Num() == GAMEOVER && m_pGameBase->Get_Change_Restart())
 	{
-		//ReStart();
+		m_pGameBase->Cleanup();
+		delete m_pGameBase;
+
+		m_pGameBase = new CStage;
+		m_pGameBase->InitD3D(m_hWnd);
 	}
 }
 

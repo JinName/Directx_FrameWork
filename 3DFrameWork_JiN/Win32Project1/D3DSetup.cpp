@@ -48,6 +48,10 @@ HRESULT CD3DSetup::InitD3D(HWND hWnd)
 	return S_OK;
 }
 
+VOID CD3DSetup::Shutdown()
+{
+}
+
 
 void CD3DSetup::Update()
 {

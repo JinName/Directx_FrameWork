@@ -16,12 +16,16 @@ private:
 	int m_iDirection; // 발사 방향 ( 캐릭터 방향에 따른 )
 
 	bool m_b_is_Collision; // 적과 충돌했을 경우 true
+	bool m_bHit_Ani; // 사라지기전에 터지는 애니메이션
+	bool m_bCollision_is_Possible; // 터지는 애니메이션일 때는 충돌 false
 
-	bool m_bDestroy;
+	bool m_bDestroy; // true 면 소멸
 
 public:
 	CFireBall();
 	~CFireBall();
+
+	bool Get_Collision_is_Possible() { return m_bCollision_is_Possible; }
 
 	bool Get_isCollision() { return m_b_is_Collision; }
 	void Set_isCollision(bool _isCollision) { m_b_is_Collision = _isCollision; }

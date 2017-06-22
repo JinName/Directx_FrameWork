@@ -271,7 +271,7 @@ void CAru::Init(LPDIRECT3DDEVICE9 _pDevice)
 	isHit = false; // 피격
 
 	// 충돌박스 선 그리기
-	Line_Init(_pDevice);
+	//Line_Init(_pDevice);
 
 	// 캐릭터 기본 시작 위치
 	m_vPos = { 100.0f, 300.0f, 0.0f };
@@ -316,7 +316,7 @@ void CAru::Init(LPDIRECT3DDEVICE9 _pDevice)
 	// 캐릭터 좌우 움직임 먼지 파티클
 	m_Run_Particle_Sprite.Create_Sprite(_pDevice, L"2D_Sprites\\Run_Particle.png", 80, 16, 5, D3DCOLOR_XRGB(65, 188, 222));
 
-	m_FireBall.Create_Sprite(_pDevice, L"2D_Sprites\\fireball.png", 384, 64, 6, NULL);
+	m_FireBall.Create_Sprite(_pDevice, L"2D_Sprites\\fireball.png", 576, 96, 6, NULL);
 	m_FireBall_Hit.Create_Sprite(_pDevice, L"2D_Sprites\\fireball_hit.png", 576, 64, 9, NULL);
 }
 
@@ -372,7 +372,7 @@ void CAru::Render()
 
 	Skill_Render();
 
-	Draw_RectLine();
+	//Draw_RectLine();
 }
 
 void CAru::Clean()

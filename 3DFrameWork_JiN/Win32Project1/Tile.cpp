@@ -12,7 +12,7 @@ void CTile::Init(LPDIRECT3DDEVICE9 _pDevice, TILE_STYLE _STYLE, D3DXVECTOR3 _vPo
 {
 	m_bCollision_is_Possible = false;
 	m_b_isCollision = false;
-	Line_Init(_pDevice);
+	//Line_Init(_pDevice);
 
 	m_vPos = _vPos;
 
@@ -44,7 +44,7 @@ void CTile::Update()
 void CTile::Render()
 {
 	m_Sprite.DrawBitmap(&m_vPos, 0xFFFFFFFF, false);
-	Draw_RectLine();
+	//Draw_RectLine();
 }
 
 void CTile::Clean()

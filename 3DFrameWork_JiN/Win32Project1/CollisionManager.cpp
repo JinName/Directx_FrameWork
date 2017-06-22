@@ -115,10 +115,18 @@ void CCollisionManager::CharAttack_Monster_Check(list<CFireBall*> &_FireBall_Lis
 	{
 		while (fire_begin_iter != fire_end_iter)
 		{
-			if (m_boxCollider.isIntersect(Monster_begin_iter->Get_Collider(), (*fire_begin_iter)->Get_Collider()))
+			if ((*fire_begin_iter)->Get_Collision_is_Possible())
 			{
-				Monster_begin_iter->Set_isCollision(true);
-				(*fire_begin_iter)->Set_isCollision(true);
+				if (m_boxCollider.isIntersect(Monster_begin_iter->Get_Collider(), (*fire_begin_iter)->Get_Collider()))
+				{
+					Monster_begin_iter->Set_isCollision(true);
+					if ((*fire_begin_iter)->Get_Position().x < Monster_begin_iter->Get_Position().x)
+						Monster_begin_iter->Set_Collision_Direction(-1);
+					else if ((*fire_begin_iter)->Get_Position().x > Monster_begin_iter->Get_Position().x)
+						Monster_begin_iter->Set_Collision_Direction(1);
+
+					(*fire_begin_iter)->Set_isCollision(true);
+				}
 			}
 			++fire_begin_iter;
 		}

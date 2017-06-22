@@ -19,12 +19,12 @@ void CPotion::Potion_Destroy()
 
 void CPotion::Init(LPDIRECT3DDEVICE9 _pDevice, D3DXVECTOR3 _vPos)
 {
-	Line_Init(_pDevice);
+	//Line_Init(_pDevice);
 
 	m_vPos = _vPos;
 	m_iRecoverPoint = 1;
 
-	m_Sprite.Create_Sprite(_pDevice, L"2D_Sprites\\Potion.png", 480, 96, 5, D3DCOLOR_XRGB(0, 0, 0));
+	m_Sprite.Create_Sprite(_pDevice, L"2D_Sprites\\Potion.png", 640, 128, 5, D3DCOLOR_XRGB(0, 0, 0));
 	Set_Collider(48.0f, 48.0f, true);
 }
 
@@ -39,7 +39,7 @@ void CPotion::Render()
 {
 	m_Sprite.DrawBitmap(&m_vPos, 0xFFFFFFFF, false);
 
-	Draw_RectLine();
+	//Draw_RectLine();
 }
 
 void CPotion::Clean()

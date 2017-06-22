@@ -74,7 +74,7 @@ void CWinSetup::createWindow()
 	//윈도우 생성
 	AdjustWindowRect(&m_rc, WS_OVERLAPPEDWINDOW, FALSE);
 	m_hWnd = CreateWindow(L"3DFRAMEWORK_ver1.0", L"3DFRAMEWORK", WS_OVERLAPPEDWINDOW,
-		CW_USEDEFAULT, CW_USEDEFAULT, m_rc.right - m_rc.left, m_rc.bottom - m_rc.top, NULL, NULL, m_hInst,
+		350, 120, m_rc.right - m_rc.left, m_rc.bottom - m_rc.top, NULL, NULL, m_hInst,
 		NULL);
 
 	SetWindowLong(m_hWnd, GWL_USERDATA, (LONG)this);	
